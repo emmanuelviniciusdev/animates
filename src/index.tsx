@@ -4,10 +4,11 @@ import './index.css'
 import App from './App'
 import * as serviceWorkerRegistration from './serviceWorkerRegistration'
 import reportWebVitals from './reportWebVitals'
+import Routes from './routes'
 
 ReactDOM.render(
     <React.StrictMode>
-        <App />
+        <Routes />
     </React.StrictMode>,
     document.getElementById('root')
 )
