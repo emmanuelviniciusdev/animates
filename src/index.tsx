@@ -5,10 +5,14 @@ import App from './App'
 import * as serviceWorkerRegistration from './serviceWorkerRegistration'
 import reportWebVitals from './reportWebVitals'
 import Routes from './routes'
+import { Provider } from 'react-redux'
+import store from './redux/store'
 
 ReactDOM.render(
     <React.StrictMode>
-        <Routes />
+        <Provider store={store}>
+            <Routes />
+        </Provider>
     </React.StrictMode>,
     document.getElementById('root')
 )
