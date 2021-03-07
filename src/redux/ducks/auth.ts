@@ -1,6 +1,6 @@
-import { Action } from '../../shared/interfaces/duck.interface'
-import { Nullable } from '../../shared/types/app.type'
-import { User } from '../../shared/interfaces/user.interface'
+import { Action } from '../../shared/types/duck.types'
+import { Nullable } from '../../shared/types/app.types'
+import { User } from '../../shared/types/user.types'
 
 /**
  * Action types
