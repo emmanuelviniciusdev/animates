@@ -14,7 +14,12 @@ ReactDOM.render(
         <Provider store={store}>
             <ThemeProvider theme={darkTheme}>
                 <GlobalStyle />
-                <Routes />
+
+                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                    <div style={{ width: '100%', maxWidth: '1300px' }}>
+                        <Routes />
+                    </div>
+                </div>
             </ThemeProvider>
         </Provider>
     </React.StrictMode>,

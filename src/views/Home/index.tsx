@@ -1,14 +1,22 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
-import { RootState } from '../../redux/store'
+import { Header, LocalGlobalStyle, Main, Title } from './styles'
+import SimpleButton from '../../components/SimpleButton'
 
 function Home() {
-    const auth = useSelector((state: RootState) => state.auth)
-
     return (
-        <div>
-            <h1>O usuário está: {auth.token ? 'logado' : 'deslogado'}.</h1>
-        </div>
+        <>
+            <LocalGlobalStyle />
+
+            <Main>
+                <Header>
+                    <SimpleButton>Começar</SimpleButton>
+                </Header>
+
+                <Title>
+                    AJUDE O SEU MELHOR AMIGO A ENCONTRAR UMA CARA-METADE
+                </Title>
+            </Main>
+        </>
     )
 }
 
