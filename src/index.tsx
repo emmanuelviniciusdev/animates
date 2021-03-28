@@ -5,11 +5,17 @@ import reportWebVitals from './reportWebVitals'
 import Routes from './routes'
 import { Provider } from 'react-redux'
 import store from './redux/store'
+import GlobalStyle from './styles/globalStyle'
+import { ThemeProvider } from 'styled-components'
+import { darkTheme } from './styles/themes'
 
 ReactDOM.render(
     <React.StrictMode>
         <Provider store={store}>
-            <Routes />
+            <ThemeProvider theme={darkTheme}>
+                <GlobalStyle />
+                <Routes />
+            </ThemeProvider>
         </Provider>
     </React.StrictMode>,
     document.getElementById('root')
