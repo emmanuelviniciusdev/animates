@@ -9,6 +9,8 @@ declare module 'styled-components' {
         colorPrimary: string
         colorSecondary: string
         colorTertiary: string
+
+        borderColorPrimary: string
     }
 }
 
@@ -20,4 +22,6 @@ export const darkTheme: DefaultTheme = {
     colorPrimary: '#FFF',
     colorSecondary: '#CCC',
     colorTertiary: '#878787',
+
+    borderColorPrimary: '#2c2c2c',
 }

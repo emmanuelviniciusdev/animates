@@ -1,11 +1,17 @@
 import React from 'react'
+import { LocalGlobalStyle } from './styles'
+import AuthModal from '../../components/AuthModal'
 
-function Lofin() {
+function Login() {
     return (
-        <div>
-            <h1>Login</h1>
-        </div>
+        <>
+            <LocalGlobalStyle />
+
+            <main>
+                <AuthModal />
+            </main>
+        </>
     )
 }
 
-export default Lofin
+export default Login
