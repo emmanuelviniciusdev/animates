@@ -20,7 +20,7 @@ export const Button = styled.button<Props>`
     background-color: ${({ btnTheme, theme }) =>
         getBackgroundColor(btnTheme, theme)};
     color: ${(props) => props.theme.colorPrimary};
-    font-size: ${({ size }) => fontSizes[size]};
+    font-size: ${({ btnSize }) => fontSizes[btnSize]};
     font-weight: 400;
     border: none;
     border-radius: 5px;

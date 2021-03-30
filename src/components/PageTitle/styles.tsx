@@ -1,9 +1,19 @@
 import styled from 'styled-components'
+import { LineWidth } from '../PageTitle/types'
 
-export const Line = styled.div`
-    /* TODO: Implement dynamic width. */
-    width: 100px;
-    height: 4px;
+const lineWitdhs = {
+    auto: 'auto',
+    greaterThanContent: '180%',
+    smallerThanContent: '40%',
+}
+
+export const WrapperPageTitle = styled.div`
+    max-width: max-content;
+`
+
+export const Line = styled.div<{ lineWidth: LineWidth }>`
+    width: ${(props) => lineWitdhs[props.lineWidth]};
+    height: 5px;
     background-color: ${(props) => props.theme.bgPrimary};
     margin-top: -11px;
 `

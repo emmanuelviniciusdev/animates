@@ -3,12 +3,12 @@ import { Button } from './styles'
 import { Props } from './types'
 
 function SimpleButton({
-    size = 'md',
+    btnSize = 'md',
     btnTheme = 'primary',
     children,
 }: Partial<Props>) {
     return (
-        <Button size={size} btnTheme={btnTheme}>
+        <Button btnSize={btnSize} btnTheme={btnTheme}>
             {children}
         </Button>
     )

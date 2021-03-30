@@ -1,9 +1,11 @@
-export type Size = 'sm' | 'md' | 'lg'
+import { HTMLProps } from 'react'
+
+export type BtnSize = 'sm' | 'md' | 'lg'
 
 export type BtnTheme = 'primary' | 'secondary'
 
-export type Props = {
-    size: Size
+export type Props = HTMLProps<HTMLButtonElement> & {
+    btnSize: BtnSize
     btnTheme: BtnTheme
     children?: string
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import { LocalGlobalStyle } from './styles'
-import AuthModal from '../../components/AuthModal'
+import AuthSection from '../../components/AuthSection'
 
 function Login() {
     return (
@@ -8,7 +8,7 @@ function Login() {
             <LocalGlobalStyle />
 
             <main>
-                <AuthModal />
+                <AuthSection />
             </main>
         </>
     )
