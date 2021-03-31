@@ -17,7 +17,7 @@ declare module 'styled-components' {
 export const darkTheme: DefaultTheme = {
     bgDefault: '#302B2F',
     bgPrimary: '#FC4A1A',
-    bgSecondary: '#4D474B',
+    bgSecondary: '#232323',
 
     colorPrimary: '#FFF',
     colorSecondary: '#CCC',

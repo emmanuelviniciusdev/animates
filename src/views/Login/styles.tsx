@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from 'styled-components'
 import dogAndCat1 from '../../assets/images/dog-and-cat-1.png'
 
 export const LocalGlobalStyle = createGlobalStyle`

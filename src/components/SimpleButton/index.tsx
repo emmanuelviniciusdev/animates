@@ -6,9 +6,10 @@ function SimpleButton({
     btnSize = 'md',
     btnTheme = 'primary',
     children,
+    ...rest
 }: Partial<Props>) {
     return (
-        <Button btnSize={btnSize} btnTheme={btnTheme}>
+        <Button {...rest} btnSize={btnSize} btnTheme={btnTheme}>
             {children}
         </Button>
     )
