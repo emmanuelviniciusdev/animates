@@ -3,6 +3,7 @@ import { Props } from './types'
 import { Content, Section, WrapperForm } from './styles'
 import PageTitle from '../../components/PageTitle'
 import FormLogin from '../../components/FormLogin'
+import FormRegister from '../../components/FormRegister'
 
 const pageModes = {
     login: {
@@ -11,7 +12,7 @@ const pageModes = {
     },
     register: {
         title: 'Criar conta',
-        formComponent: FormLogin,
+        formComponent: FormRegister,
     },
     'forgot-password': {
         title: 'Recuperar senha',

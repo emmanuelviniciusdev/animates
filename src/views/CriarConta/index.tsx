@@ -1,10 +1,16 @@
 import React from 'react'
+import AuthSection from '../../components/AuthSection'
+import { ApplyDogAndCat1Background } from '../../styles/commonStyles'
 
 function CriarConta() {
     return (
-        <div>
-            <h1>Criar conta</h1>
-        </div>
+        <>
+            <ApplyDogAndCat1Background />
+
+            <main>
+                <AuthSection mode="register" />
+            </main>
+        </>
     )
 }
 
