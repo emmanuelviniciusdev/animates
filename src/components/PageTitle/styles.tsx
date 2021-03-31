@@ -3,7 +3,7 @@ import { LineWidth } from '../PageTitle/types'
 
 const lineWitdhs = {
     auto: 'auto',
-    greaterThanContent: '180%',
+    greaterThanContent: '130%',
     smallerThanContent: '40%',
 }
 
