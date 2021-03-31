@@ -18,7 +18,7 @@ function Routes() {
                         <Route path="/login" component={Login} />
                         <Route path="/criar-conta" component={CriarConta} />
                         <Route
-                            path="/esqueci-minha-senha"
+                            path="/recuperar-senha"
                             component={EsqueciMinhaSenha}
                         />
                     </Switch>
