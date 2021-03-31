@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components'
-import dogAndCat1 from '../../assets/images/dog-and-cat-1.png'
+import dogAndCat1 from '../assets/images/dog-and-cat-1.png'
 
-export const LocalGlobalStyle = createGlobalStyle`
+export const ApplyDogAndCat1Background = createGlobalStyle`
     body {
         background: url(${dogAndCat1}) no-repeat center center fixed;
         -webkit-background-size: cover;

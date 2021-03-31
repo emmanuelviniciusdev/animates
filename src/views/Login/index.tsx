@@ -1,11 +1,11 @@
 import React from 'react'
-import { LocalGlobalStyle } from './styles'
+import { ApplyDogAndCat1Background } from '../../styles/commonStyles'
 import AuthSection from '../../components/AuthSection'
 
 function Login() {
     return (
         <>
-            <LocalGlobalStyle />
+            <ApplyDogAndCat1Background />
 
             <main>
                 <AuthSection />
