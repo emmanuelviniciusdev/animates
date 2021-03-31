@@ -4,6 +4,7 @@ import { Content, Section, WrapperForm } from './styles'
 import PageTitle from '../../components/PageTitle'
 import FormLogin from '../../components/FormLogin'
 import FormRegister from '../../components/FormRegister'
+import FormForgotPassword from '../../components/FormForgotPassword'
 
 const pageModes = {
     login: {
@@ -15,8 +16,8 @@ const pageModes = {
         formComponent: FormRegister,
     },
     'forgot-password': {
-        title: 'Recuperar senha',
-        formComponent: FormLogin,
+        title: 'Recuperação de senha',
+        formComponent: FormForgotPassword,
     },
 }
 

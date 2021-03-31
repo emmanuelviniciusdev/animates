@@ -1,10 +1,16 @@
 import React from 'react'
+import AuthSection from '../../components/AuthSection'
+import { ApplyDogAndCat1Background } from '../../styles/commonStyles'
 
 function EsqueciMinhaSenha() {
     return (
-        <div>
-            <h1>Esqueci minha senha</h1>
-        </div>
+        <>
+            <ApplyDogAndCat1Background />
+
+            <main>
+                <AuthSection mode="forgot-password" />
+            </main>
+        </>
     )
 }
 
