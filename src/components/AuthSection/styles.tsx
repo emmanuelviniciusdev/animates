@@ -2,7 +2,9 @@ import styled from 'styled-components'
 
 export const Content = styled.div`
     width: 100%;
-    height: 100vh;
+    height: 100%;
+    position: fixed;
+    overflow-y: scroll;
     background-color: rgba(21, 21, 21, 0.6);
     box-sizing: border-box;
     box-shadow: 6px 6px 20px rgba(0, 0, 0, 0.25);
@@ -18,6 +20,8 @@ export const Content = styled.div`
         width: 600px;
         height: auto;
         border-radius: 5px;
+        position: initial;
+        overflow-y: auto;
     }
 `
 
