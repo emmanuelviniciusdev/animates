@@ -13,12 +13,14 @@ function FormLogin() {
             <form>
                 <AppInput
                     type="email"
-                    placeholder="login ou e-mail"
+                    placeholder="e-mail"
+                    aria-label="e-mail"
                     icon={userCircleDuotone}
                 />
                 <AppInput
                     type="password"
                     placeholder="senha"
+                    aria-label="senha"
                     icon={keyDuotone}
                 />
 

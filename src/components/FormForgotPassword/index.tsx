@@ -11,6 +11,7 @@ function FormForgotPassword() {
                 <AppInput
                     type="email"
                     placeholder="e-mail"
+                    aria-label="e-mail"
                     icon={envelopeSimpleDuotone}
                 />
 

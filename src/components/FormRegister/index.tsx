@@ -12,26 +12,31 @@ function FormRegister() {
                 <AppInput
                     type="email"
                     placeholder="e-mail"
+                    aria-label="e-mail"
                     icon={envelopeSimpleDuotone}
                 />
                 <AppInput
                     type="text"
                     placeholder="nome"
+                    aria-label="nome"
                     icon={userCircleDuotone}
                 />
                 <AppInput
                     type="text"
                     placeholder="sobrenome"
+                    aria-label="sobrenome"
                     icon={userCircleDuotone}
                 />
                 <AppInput
                     type="password"
                     placeholder="senha"
+                    aria-label="senha"
                     icon={keyDuotone}
                 />
                 <AppInput
                     type="password"
                     placeholder="confirmar senha"
+                    aria-label="confirmar senha"
                     icon={keyDuotone}
                 />
 
