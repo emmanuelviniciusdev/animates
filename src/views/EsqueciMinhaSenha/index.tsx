@@ -11,7 +11,10 @@ function EsqueciMinhaSenha() {
             <ApplyDogAndCat1Background />
 
             <main>
-                <AuthSection mode="forgot-password" />
+                <AuthSection
+                    mode="forgot-password"
+                    pageTitleLineWidth="smallerThanContent"
+                />
             </main>
         </>
     )

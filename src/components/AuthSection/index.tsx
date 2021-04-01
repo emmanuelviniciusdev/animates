@@ -21,15 +21,19 @@ const pageModes = {
     },
 }
 
-function AuthSection({ mode = 'login' }: Partial<Props>) {
+function AuthSection({
+    mode = 'login',
+    pageTitleLineWidth = 'greaterThanContent',
+}: Partial<Props>) {
     const AuthFormComponent = pageModes[mode].formComponent
+    const pageTitle = pageModes[mode].title
 
     return (
         <Section>
             <Content>
                 <header>
-                    <PageTitle lineWidth="greaterThanContent">
-                        {pageModes[mode].title}
+                    <PageTitle lineWidth={pageTitleLineWidth}>
+                        {pageTitle}
                     </PageTitle>
                 </header>
 
