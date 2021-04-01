@@ -24,8 +24,11 @@ export const LoadingSpinnerStyle = styled.div<Props>`
         border-radius: 50%;
         border: ${(props) => props.borderSize ?? '6px'} solid
             ${(props) => props.theme.bgPrimary};
-        border-color: ${(props) => props.theme.bgPrimary} transparent
-            ${(props) => props.theme.bgPrimary} transparent;
+        border-color: ${(props) =>
+                props.backgroundColor ?? props.theme.bgPrimary}
+            transparent
+            ${(props) => props.backgroundColor ?? props.theme.bgPrimary}
+            transparent;
         animation: ${ldsDualRing} 1.2s linear infinite;
     }
 `
