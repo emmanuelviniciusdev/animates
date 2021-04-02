@@ -6,6 +6,7 @@ const Home = lazy(() => import('../views/Home'))
 const Login = lazy(() => import('../views/Login'))
 const CriarConta = lazy(() => import('../views/CriarConta'))
 const EsqueciMinhaSenha = lazy(() => import('../views/EsqueciMinhaSenha'))
+const Inicio = lazy(() => import('../views/Inicio'))
 
 function Routes() {
     return (
@@ -22,6 +23,8 @@ function Routes() {
                             path="/recuperar-senha"
                             component={EsqueciMinhaSenha}
                         />
+
+                        <Route path="/inicio" component={Inicio} />
                     </Switch>
                 </Suspense>
             </Router>

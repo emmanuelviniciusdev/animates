@@ -16,7 +16,14 @@ ReactDOM.render(
                 <GlobalStyle />
 
                 <div style={{ display: 'flex', justifyContent: 'center' }}>
-                    <div style={{ width: '100%', maxWidth: '1300px' }}>
+                    <div
+                        style={{
+                            width: '100%',
+                            maxWidth: '1300px',
+                            // background: 'gray',
+                            position: 'relative',
+                        }}
+                    >
                         <Routes />
                     </div>
                 </div>
