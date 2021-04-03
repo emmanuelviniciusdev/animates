@@ -14,6 +14,7 @@ import listBold from '@iconify/icons-ph/list-bold'
 import bellDuotone from '@iconify/icons-ph/bell-duotone'
 import xBold from '@iconify/icons-ph/x-bold'
 import MenuPopUpMoreOptions from '../MenuPopUpMoreOptions'
+import MenuPopUpNotifications from '../MenuPopUpNotifications'
 
 const popUpModes = {
     'more-options': {
@@ -24,7 +25,7 @@ const popUpModes = {
     notifications: {
         icon: bellDuotone,
         title: 'Notificações',
-        component: MenuPopUpMoreOptions,
+        component: MenuPopUpNotifications,
     },
 }
 
