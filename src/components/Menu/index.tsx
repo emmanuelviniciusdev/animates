@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
     WrapperContent,
     Content,
@@ -13,11 +13,25 @@ import chatCircleDotsDuotone from '@iconify/icons-ph/chat-circle-dots-duotone'
 import bellDuotone from '@iconify/icons-ph/bell-duotone'
 import arrowCircleUpDuotone from '@iconify/icons-ph/arrow-circle-up-duotone'
 import arrowCircleDownDuotone from '@iconify/icons-ph/arrow-circle-down-duotone'
+import MenuPopUp from '../MenuPopUp'
+import { Modes as MenuPopUpModes } from '../MenuPopUp/types'
 
 function Menu() {
+    const [menuPopUpMode, setMenuPopUpMode] = useState<MenuPopUpModes | null>(
+        null
+    )
+
+    const closeMenuPopUp = () => setMenuPopUpMode(null)
+    const openMenuPopUpMoreOptions = () => setMenuPopUpMode('more-options')
+    const openMenuPopUpNotifications = () => setMenuPopUpMode('notifications')
+
     return (
         <>
             <InsertBodyPaddingBottom />
+
+            {menuPopUpMode && (
+                <MenuPopUp mode={menuPopUpMode} onClose={closeMenuPopUp} />
+            )}
 
             <WrapperContent>
                 <Content>
@@ -45,13 +59,19 @@ function Menu() {
                         </div>
                     </ButtonIcon>
 
-                    <ButtonIcon aria-label="Notificações">
+                    <ButtonIcon
+                        aria-label="Notificações"
+                        onClick={openMenuPopUpNotifications}
+                    >
                         <div>
                             <Icon icon={bellDuotone} />
                         </div>
                     </ButtonIcon>
 
-                    <ButtonIcon aria-label="Mais opções">
+                    <ButtonIcon
+                        aria-label="Mais opções"
+                        onClick={openMenuPopUpMoreOptions}
+                    >
                         <div>
                             <Icon
                                 icon={arrowCircleUpDuotone}

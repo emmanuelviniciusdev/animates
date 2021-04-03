@@ -18,7 +18,7 @@ export const WrapperContent = styled.div`
     position: fixed;
     bottom: 0;
     background: ${(props) => props.theme.bgSecondary};
-    z-index: 10;
+    z-index: 1;
     margin-top: 100px;
 
     @media (min-width: 1280px) {
@@ -26,9 +26,13 @@ export const WrapperContent = styled.div`
         position: absolute;
         margin: 0;
         top: 25px;
-        right: 0;
+        right: 20px;
         bottom: auto;
         background: transparent;
+    }
+
+    @media (min-width: 1320px) {
+        right: 0;
     }
 `
 
