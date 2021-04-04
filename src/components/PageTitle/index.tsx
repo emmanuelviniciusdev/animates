@@ -11,7 +11,7 @@ function PageTitle({
 
     return (
         <>
-            <WrapperPageTitle>
+            <WrapperPageTitle className="wrapper-page-title">
                 <HeadingTag>{children}</HeadingTag>
                 <Line lineWidth={lineWidth} />
             </WrapperPageTitle>
