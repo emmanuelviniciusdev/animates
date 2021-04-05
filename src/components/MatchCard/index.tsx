@@ -27,6 +27,7 @@ function MatchCard() {
                 </Information>
 
                 <Actions>
+                    {/* TODO: Use 'CardButton' instead of 'ButtonAction'. */}
                     <ButtonAction aria-label="Não amar">
                         <Icon icon={xBold} className="icon" />
                     </ButtonAction>

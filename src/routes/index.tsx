@@ -8,6 +8,7 @@ const CriarConta = lazy(() => import('../views/CriarConta'))
 const EsqueciMinhaSenha = lazy(() => import('../views/EsqueciMinhaSenha'))
 const Inicio = lazy(() => import('../views/Inicio'))
 const Match = lazy(() => import('../views/Match'))
+const Adocao = lazy(() => import('../views/Adocao'))
 
 function Routes() {
     return (
@@ -26,6 +27,7 @@ function Routes() {
 
                         <Route path="/inicio" component={Inicio} />
                         <Route path="/match" component={Match} />
+                        <Route path="/adocao" component={Adocao} />
                     </Switch>
                 </Suspense>
             </Router>
