@@ -35,7 +35,7 @@ function AdocaoCard() {
                     <CardButton icon={heartFill} hasIconHeart={true}>
                         Adotar
                     </CardButton>
-                    <ReportButton>
+                    <ReportButton aria-label="Reportar">
                         <Icon icon={warningOctagonalDuotone} className="icon" />
                     </ReportButton>
                 </Actions>
