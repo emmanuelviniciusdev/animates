@@ -10,7 +10,7 @@ import {
 } from './styles'
 import tobby from '../../assets/images/tobby.jpg'
 import { Icon } from '@iconify/react'
-import heartBold from '@iconify/icons-ph/heart-fill'
+import heartFill from '@iconify/icons-ph/heart-fill'
 import xBold from '@iconify/icons-ph/x-bold'
 import warningOctagonalDuotone from '@iconify/icons-ph/warning-octagon-duotone'
 
@@ -31,7 +31,7 @@ function MatchCard() {
                         <Icon icon={xBold} className="icon" />
                     </ButtonAction>
                     <ButtonAction aria-label="Amar">
-                        <Icon icon={heartBold} className="icon icon-heart" />
+                        <Icon icon={heartFill} className="icon icon-heart" />
                     </ButtonAction>
                 </Actions>
 
