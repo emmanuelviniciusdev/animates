@@ -15,6 +15,7 @@ import arrowCircleUpDuotone from '@iconify/icons-ph/arrow-circle-up-duotone'
 import arrowCircleDownDuotone from '@iconify/icons-ph/arrow-circle-down-duotone'
 import MenuPopUp from '../MenuPopUp'
 import { Modes as MenuPopUpModes } from '../MenuPopUp/types'
+import { useMediaQuery } from 'react-responsive'
 
 function Menu() {
     const [menuPopUpMode, setMenuPopUpMode] = useState<MenuPopUpModes | null>(
@@ -24,6 +25,14 @@ function Menu() {
     const closeMenuPopUp = () => setMenuPopUpMode(null)
     const openMenuPopUpMoreOptions = () => setMenuPopUpMode('more-options')
     const openMenuPopUpNotifications = () => setMenuPopUpMode('notifications')
+
+    // TODO: Finish implementation of menu tooltips.
+    /**
+     * Before screen width hits 1280px the menu is displayed at the bottom.
+     */
+    // const isMobileScreen = useMediaQuery({
+    //     query: '(max-width: 1279px)',
+    // })
 
     return (
         <>
