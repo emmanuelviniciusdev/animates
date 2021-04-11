@@ -5,12 +5,18 @@ import { Props } from './types'
 function SimpleButton({
     btnSize = 'md',
     btnTheme = 'primary',
+    isLoading = false,
     children,
     ...rest
 }: Partial<Props>) {
     return (
-        <Button {...rest} btnSize={btnSize} btnTheme={btnTheme}>
-            {children}
+        <Button
+            disabled={isLoading}
+            btnSize={btnSize}
+            btnTheme={btnTheme}
+            {...rest}
+        >
+            {isLoading ? 'Aguarde...' : children}
         </Button>
     )
 }

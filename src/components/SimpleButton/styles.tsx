@@ -1,5 +1,6 @@
+import { lighten } from 'polished'
 import styled, { DefaultTheme } from 'styled-components'
-import { BtnTheme, Props } from './types'
+import { BtnSize, BtnTheme } from './types'
 
 const getBackgroundColor = (btnTheme: BtnTheme, theme: DefaultTheme) => {
     const backgroundColors = {
@@ -16,7 +17,7 @@ const fontSizes = {
     lg: '24px',
 }
 
-export const Button = styled.button<Props>`
+export const Button = styled.button<{ btnSize: BtnSize; btnTheme: BtnTheme }>`
     background-color: ${({ btnTheme, theme }) =>
         getBackgroundColor(btnTheme, theme)};
     color: ${(props) => props.theme.colorPrimary};
@@ -26,4 +27,11 @@ export const Button = styled.button<Props>`
     border-radius: 5px;
     cursor: pointer;
     padding: 10px;
+
+    &:disabled {
+        background-color: ${(props) =>
+            lighten(0.1, getBackgroundColor(props.btnTheme, props.theme))};
+        cursor: not-allowed;
+        outline: none;
+    }
 `
