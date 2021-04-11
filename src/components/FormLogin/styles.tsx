@@ -15,13 +15,13 @@ export const ForgotPasswordContent = styled.div`
     .icon {
         font-size: 20px;
     }
-`
 
-export const A = styled.a`
-    color: ${(props) => props.theme.colorPrimary};
-    text-decoration: none;
+    a {
+        color: ${(props) => props.theme.colorPrimary};
+        text-decoration: none;
 
-    &:hover {
-        text-decoration: underline;
+        &:hover {
+            text-decoration: underline;
+        }
     }
 `

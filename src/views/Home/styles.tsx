@@ -35,14 +35,17 @@ export const Header = styled.header`
     width: 100%;
     display: flex;
 
-    button {
-        width: 150px;
+    a {
         margin-left: auto;
         margin-right: 20px;
     }
 
+    button {
+        width: 150px;
+    }
+
     @media (min-width: 1320px) {
-        button {
+        a {
             margin-right: 0;
         }
     }

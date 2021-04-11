@@ -1,5 +1,5 @@
 import React from 'react'
-import { ForgotPasswordArea, A, ForgotPasswordContent } from './styles'
+import { ForgotPasswordArea, ForgotPasswordContent } from './styles'
 import SimpleButton from '../SimpleButton'
 import AppInput from '../../components/AppInput'
 import { Icon } from '@iconify/react'
@@ -13,6 +13,7 @@ import { login } from '../../redux/ducks/auth'
 import { RootState } from '../../redux/store'
 import { useSelector } from 'react-redux'
 import useThunkDispatch from '../../hooks/useThunkDispatch'
+import { Link } from 'react-router-dom'
 
 function FormLogin() {
     const authState = useSelector((state: RootState) => state.auth)
@@ -66,7 +67,7 @@ function FormLogin() {
 
                 <ForgotPasswordArea>
                     <ForgotPasswordContent>
-                        <A href="#">esqueci minha senha</A>
+                        <Link to="/recuperar-senha">esqueci minha senha</Link>
                         <Icon icon={questionDuotone} className="icon" />
                     </ForgotPasswordContent>
                 </ForgotPasswordArea>
@@ -78,13 +79,15 @@ function FormLogin() {
                 >
                     Entrar
                 </SimpleButton>
-                <SimpleButton
-                    type="button"
-                    btnTheme="secondary"
-                    className="form-btn"
-                >
-                    Criar uma conta
-                </SimpleButton>
+                <Link to="/criar-conta">
+                    <SimpleButton
+                        type="button"
+                        btnTheme="secondary"
+                        className="form-btn"
+                    >
+                        Criar uma conta
+                    </SimpleButton>
+                </Link>
             </form>
         </>
     )

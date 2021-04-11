@@ -16,6 +16,7 @@ import arrowCircleDownDuotone from '@iconify/icons-ph/arrow-circle-down-duotone'
 import MenuPopUp from '../MenuPopUp'
 import { Modes as MenuPopUpModes } from '../MenuPopUp/types'
 import { useMediaQuery } from 'react-responsive'
+import { Link } from 'react-router-dom'
 
 function Menu() {
     const [menuPopUpMode, setMenuPopUpMode] = useState<MenuPopUpModes | null>(
@@ -44,29 +45,37 @@ function Menu() {
 
             <WrapperContent>
                 <Content>
-                    <ButtonIcon aria-label="Início">
-                        <div>
-                            <Icon icon={houseDuotone} />
-                        </div>
-                    </ButtonIcon>
+                    <Link to="/inicio">
+                        <ButtonIcon aria-label="Início">
+                            <div>
+                                <Icon icon={houseDuotone} />
+                            </div>
+                        </ButtonIcon>
+                    </Link>
 
-                    <ButtonIcon aria-label="Match">
-                        <div>
-                            <Icon icon={heartDuotone} />
-                        </div>
-                    </ButtonIcon>
+                    <Link to="/match">
+                        <ButtonIcon aria-label="Match">
+                            <div>
+                                <Icon icon={heartDuotone} />
+                            </div>
+                        </ButtonIcon>
+                    </Link>
 
-                    <ButtonIcon aria-label="Adoção">
-                        <div>
-                            <Icon icon={pawPrintDuotone} />
-                        </div>
-                    </ButtonIcon>
+                    <Link to="/adocao">
+                        <ButtonIcon aria-label="Adoção">
+                            <div>
+                                <Icon icon={pawPrintDuotone} />
+                            </div>
+                        </ButtonIcon>
+                    </Link>
 
-                    <ButtonIcon aria-label="Mensagens">
-                        <div>
-                            <Icon icon={chatCircleDotsDuotone} />
-                        </div>
-                    </ButtonIcon>
+                    <Link to="/mensagens">
+                        <ButtonIcon aria-label="Mensagens">
+                            <div>
+                                <Icon icon={chatCircleDotsDuotone} />
+                            </div>
+                        </ButtonIcon>
+                    </Link>
 
                     <ButtonIcon
                         aria-label="Notificações"

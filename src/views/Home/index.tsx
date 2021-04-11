@@ -1,6 +1,7 @@
 import React from 'react'
 import { Header, LocalGlobalStyle, Main, Title } from './styles'
 import SimpleButton from '../../components/SimpleButton'
+import { Link } from 'react-router-dom'
 
 function Home() {
     return (
@@ -9,7 +10,9 @@ function Home() {
 
             <Main>
                 <Header>
-                    <SimpleButton>Começar</SimpleButton>
+                    <Link to="/login">
+                        <SimpleButton>Começar</SimpleButton>
+                    </Link>
                 </Header>
 
                 <Title>
