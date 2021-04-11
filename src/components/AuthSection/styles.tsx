@@ -47,6 +47,11 @@ export const WrapperForm = styled.div`
             margin-bottom: 40px;
         }
 
+        .form-input-message {
+            margin-top: -30px;
+            margin-bottom: 25px;
+        }
+
         .form-btn {
             width: 100%;
             height: 50px;
