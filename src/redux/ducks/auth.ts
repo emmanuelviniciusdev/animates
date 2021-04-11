@@ -26,6 +26,8 @@ const initialState: StateType = {
 
 export default function reducer(state = initialState, action: Action) {
     switch (action.type) {
+        case Types.LOGIN:
+            return { ...state, ...action.payload }
         default:
             return state
     }
@@ -34,13 +36,17 @@ export default function reducer(state = initialState, action: Action) {
 /**
  * Action creators
  */
-export function login(username: string, password: string) {
+export function login(email: string, password: string) {
     return (dispatch: Dispatch) => {
-        setTimeout(() => {
-            dispatch({
-                type: Types.LOGIN,
-                payload: { jwtToken: 'aaa', user: null },
-            })
-        }, 2000)
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                dispatch({
+                    type: Types.LOGIN,
+                    payload: { token: 'aaa' },
+                })
+
+                resolve(true)
+            }, 2000)
+        })
     }
 }
