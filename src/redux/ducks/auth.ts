@@ -1,6 +1,7 @@
 import { Action } from '../../shared/types/duck.types'
 import { Nullable } from '../../shared/types/app.types'
 import { User } from '../../shared/types/user.types'
+import { Dispatch } from 'redux'
 
 /**
  * Action types
@@ -33,9 +34,13 @@ export default function reducer(state = initialState, action: Action) {
 /**
  * Action creators
  */
-export function login(username: string, password: string): Action {
-    return {
-        type: Types.LOGIN,
-        payload: { username, password },
+export function login(username: string, password: string) {
+    return (dispatch: Dispatch) => {
+        setTimeout(() => {
+            dispatch({
+                type: Types.LOGIN,
+                payload: { jwtToken: 'aaa', user: null },
+            })
+        }, 2000)
     }
 }
