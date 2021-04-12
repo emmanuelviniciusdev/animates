@@ -6,8 +6,9 @@ export const Content = styled.div`
     align-items: center;
     gap: 50px;
     padding-bottom: 80px;
+    /* background-color: green; */
 
-    @media (min-width: 960px) {
+    @media (min-width: 1200px) {
         display: grid;
         grid-template-columns: 1fr 1fr;
         justify-items: center;
