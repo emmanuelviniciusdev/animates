@@ -17,6 +17,7 @@ import MenuPopUp from '../MenuPopUp'
 import { Modes as MenuPopUpModes } from '../MenuPopUp/types'
 import { useMediaQuery } from 'react-responsive'
 import { Link } from 'react-router-dom'
+import ReactTooltip from 'react-tooltip'
 
 function Menu() {
     const [menuPopUpMode, setMenuPopUpMode] = useState<MenuPopUpModes | null>(
@@ -27,16 +28,23 @@ function Menu() {
     const openMenuPopUpMoreOptions = () => setMenuPopUpMode('more-options')
     const openMenuPopUpNotifications = () => setMenuPopUpMode('notifications')
 
-    // TODO: Finish implementation of menu tooltips.
     /**
      * Before screen width hits 1280px the menu is displayed at the bottom.
      */
-    // const isMobileScreen = useMediaQuery({
-    //     query: '(max-width: 1279px)',
-    // })
+    const isMobileScreen = useMediaQuery({
+        query: '(max-width: 1279px)',
+    })
+
+    const reactTooltipPlace = isMobileScreen ? 'top' : 'bottom'
 
     return (
         <>
+            <ReactTooltip
+                id="tooltip-menu"
+                place={reactTooltipPlace}
+                effect="solid"
+            />
+
             <InsertBodyPaddingBottom />
 
             {menuPopUpMode && (
@@ -46,7 +54,11 @@ function Menu() {
             <WrapperContent>
                 <Content>
                     <Link to="/inicio">
-                        <ButtonIcon aria-label="Início">
+                        <ButtonIcon
+                            aria-label="Início"
+                            data-for="tooltip-menu"
+                            data-tip="Início"
+                        >
                             <div>
                                 <Icon icon={houseDuotone} />
                             </div>
@@ -54,7 +66,11 @@ function Menu() {
                     </Link>
 
                     <Link to="/match">
-                        <ButtonIcon aria-label="Match">
+                        <ButtonIcon
+                            aria-label="Match"
+                            data-for="tooltip-menu"
+                            data-tip="Match"
+                        >
                             <div>
                                 <Icon icon={heartDuotone} />
                             </div>
@@ -62,7 +78,11 @@ function Menu() {
                     </Link>
 
                     <Link to="/adocao">
-                        <ButtonIcon aria-label="Adoção">
+                        <ButtonIcon
+                            aria-label="Adoção"
+                            data-for="tooltip-menu"
+                            data-tip="Adoção"
+                        >
                             <div>
                                 <Icon icon={pawPrintDuotone} />
                             </div>
@@ -70,7 +90,11 @@ function Menu() {
                     </Link>
 
                     <Link to="/mensagens">
-                        <ButtonIcon aria-label="Mensagens">
+                        <ButtonIcon
+                            aria-label="Mensagens"
+                            data-for="tooltip-menu"
+                            data-tip="Mensagens"
+                        >
                             <div>
                                 <Icon icon={chatCircleDotsDuotone} />
                             </div>
@@ -79,6 +103,8 @@ function Menu() {
 
                     <ButtonIcon
                         aria-label="Notificações"
+                        data-tip="Notificações"
+                        data-for="tooltip-menu"
                         onClick={openMenuPopUpNotifications}
                     >
                         <div>
@@ -88,6 +114,8 @@ function Menu() {
 
                     <ButtonIcon
                         aria-label="Mais opções"
+                        data-tip="Mais opções"
+                        data-for="tooltip-menu"
                         onClick={openMenuPopUpMoreOptions}
                     >
                         <div>

@@ -12,10 +12,13 @@ import CardButton from '../CardButton'
 import { Icon } from '@iconify/react'
 import heartFill from '@iconify/icons-ph/heart-fill'
 import warningOctagonalDuotone from '@iconify/icons-ph/warning-octagon-duotone'
+import ReactTooltip from 'react-tooltip'
 
 function AdocaoCard() {
     return (
         <>
+            <ReactTooltip id="tooltip-adocao-card" effect="solid" />
+
             <Card>
                 <Gallery />
 
@@ -35,7 +38,11 @@ function AdocaoCard() {
                     <CardButton icon={heartFill} hasIconHeart={true}>
                         Adotar
                     </CardButton>
-                    <ReportButton aria-label="Reportar">
+                    <ReportButton
+                        aria-label="Denunciar"
+                        data-for="tooltip-adocao-card"
+                        data-tip="Denunciar"
+                    >
                         <Icon icon={warningOctagonalDuotone} className="icon" />
                     </ReportButton>
                 </Actions>
