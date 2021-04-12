@@ -13,11 +13,13 @@ import { login } from '../../redux/ducks/auth'
 import { RootState } from '../../redux/store'
 import { useSelector } from 'react-redux'
 import useThunkDispatch from '../../hooks/useThunkDispatch'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 function FormLogin() {
     const authState = useSelector((state: RootState) => state.auth)
     const dispatch = useThunkDispatch()
+
+    const history = useHistory()
 
     const formik = useFormik({
         initialValues: {
@@ -29,8 +31,8 @@ function FormLogin() {
             password: Yup.string().required(),
         }),
         onSubmit: (values, formikHelpers) => {
-            dispatch(login(values.email, values.password))
-                .then((res) => console.log(res))
+            dispatch(login(values))
+                .then(() => history.push('/inicio'))
                 .finally(() => formikHelpers.setSubmitting(false))
         },
     })

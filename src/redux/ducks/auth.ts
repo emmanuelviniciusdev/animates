@@ -1,6 +1,7 @@
 import { Action } from '../../shared/types/duck.types'
 import { Nullable } from '../../shared/types/app.types'
 import { User } from '../../shared/types/user.types'
+import { LoginData, RegisterData } from '../../shared/types/auth.types'
 import { Dispatch } from 'redux'
 
 /**
@@ -36,7 +37,22 @@ export default function reducer(state = initialState, action: Action) {
 /**
  * Action creators
  */
-export function login(email: string, password: string) {
+export function login(data: LoginData) {
+    return (dispatch: Dispatch) => {
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                dispatch({
+                    type: Types.LOGIN,
+                    payload: { token: 'aaa' },
+                })
+
+                resolve(true)
+            }, 2000)
+        })
+    }
+}
+
+export function register(data: RegisterData) {
     return (dispatch: Dispatch) => {
         return new Promise((resolve) => {
             setTimeout(() => {
