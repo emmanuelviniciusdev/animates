@@ -28,7 +28,6 @@ export const Actions = styled.div`
 
 export const ReportButton = styled.button`
     background: transparent;
-    padding: 10px 0;
 
     .icon {
         color: ${(props) => props.theme.colorPrimary};

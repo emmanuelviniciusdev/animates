@@ -11,7 +11,7 @@ import Gallery from '../Gallery'
 import CardButton from '../CardButton'
 import { Icon } from '@iconify/react'
 import heartFill from '@iconify/icons-ph/heart-fill'
-import warningOctagonalDuotone from '@iconify/icons-ph/warning-octagon-duotone'
+import warningDuotone from '@iconify/icons-ph/warning-duotone'
 import ReactTooltip from 'react-tooltip'
 
 function AdocaoCard() {
@@ -43,7 +43,7 @@ function AdocaoCard() {
                         data-for="tooltip-adocao-card"
                         data-tip="Denunciar"
                     >
-                        <Icon icon={warningOctagonalDuotone} className="icon" />
+                        <Icon icon={warningDuotone} className="icon" />
                     </ReportButton>
                 </Actions>
             </Card>
