@@ -18,6 +18,7 @@
         "@types/styled-components": "^5.1.9",
         "axios": "^0.21.1",
         "formik": "^2.2.6",
+        "msw": "^0.28.1",
         "polished": "^4.1.1",
         "react": "^17.0.1",
         "react-dom": "^17.0.1",
