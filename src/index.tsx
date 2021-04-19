@@ -9,6 +9,14 @@ import GlobalStyle from './styles/globalStyle'
 import { ThemeProvider } from 'styled-components'
 import { darkTheme } from './styles/themes'
 
+/**
+ * Enable API mocking requests
+ */
+if (process.env.NODE_ENV === 'development') {
+    const { worker } = require('./mocks/browser')
+    worker.start()
+}
+
 ReactDOM.render(
     <React.StrictMode>
         <Provider store={store}>
