@@ -4,8 +4,16 @@ import { Icon } from '@iconify/react'
 import userCircleDuotone from '@iconify/icons-ph/user-circle-duotone'
 import gearSixDuotone from '@iconify/icons-ph/gear-six-duotone'
 import signOutBold from '@iconify/icons-ph/sign-out-bold'
+import { useHistory } from 'react-router'
 
 function MenuPopUpMoreOptions() {
+    const history = useHistory()
+
+    const handleLogout = () => {
+        localStorage.removeItem('token')
+        history.push('/login')
+    }
+
     return (
         <>
             <ButtonOption>
@@ -22,7 +30,7 @@ function MenuPopUpMoreOptions() {
                 <Text>Configurações de conta</Text>
             </ButtonOption>
 
-            <ButtonOption>
+            <ButtonOption onClick={handleLogout}>
                 <WrapperIcon>
                     <Icon icon={signOutBold} className="icon" />
                 </WrapperIcon>

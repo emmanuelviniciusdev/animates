@@ -8,6 +8,8 @@ import store from './redux/store'
 import GlobalStyle from './styles/globalStyle'
 import { ThemeProvider } from 'styled-components'
 import { darkTheme } from './styles/themes'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 /**
  * Enable API mocking requests
@@ -32,6 +34,8 @@ ReactDOM.render(
                             position: 'relative',
                         }}
                     >
+                        <ToastContainer />
+
                         <Routes />
                     </div>
                 </div>

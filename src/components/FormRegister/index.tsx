@@ -4,17 +4,15 @@ import AppInput from '../../components/AppInput'
 import userCircleDuotone from '@iconify/icons-ph/user-circle-duotone'
 import envelopeSimpleDuotone from '@iconify/icons-ph/envelope-simple-duotone'
 import keyDuotone from '@iconify/icons-ph/key-duotone'
-import { useSelector } from 'react-redux'
-import { RootState } from '../../redux/store'
 import useThunkDispatch from '../../hooks/useThunkDispatch'
 import { useHistory } from 'react-router'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import FormInputMessage from '../FormInputMessage'
 import { register } from '../../redux/ducks/auth'
+import { toast } from 'react-toastify'
 
 function FormRegister() {
-    const authState = useSelector<RootState>((state) => state.auth)
     const dispatch = useThunkDispatch()
 
     const history = useHistory()
@@ -38,15 +36,25 @@ function FormRegister() {
         }),
         onSubmit: (values, formikHelpers) => {
             dispatch(register(values))
-                .then(() => history.push('/inicio'))
+                .then(() => {
+                    toast.dismiss('toast-error-register')
+                    history.push('/inicio')
+                })
+                .catch((err) => {
+                    const errorMessage =
+                        err.response.data.message ?? 'Ocorreu um erro'
+
+                    toast.error(errorMessage, {
+                        role: 'alert',
+                        toastId: 'toast-error-register',
+                    })
+                })
                 .finally(() => formikHelpers.setSubmitting(false))
         },
     })
 
     return (
         <>
-            {JSON.stringify(authState)}
-
             <form onSubmit={formik.handleSubmit}>
                 <AppInput
                     type="email"

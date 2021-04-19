@@ -10,15 +10,12 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import FormInputMessage from '../FormInputMessage'
 import { login } from '../../redux/ducks/auth'
-import { RootState } from '../../redux/store'
-import { useSelector } from 'react-redux'
 import useThunkDispatch from '../../hooks/useThunkDispatch'
 import { Link, useHistory } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 function FormLogin() {
-    const authState = useSelector((state: RootState) => state.auth)
     const dispatch = useThunkDispatch()
-
     const history = useHistory()
 
     const formik = useFormik({
@@ -32,15 +29,25 @@ function FormLogin() {
         }),
         onSubmit: (values, formikHelpers) => {
             dispatch(login(values))
-                .then(() => history.push('/inicio'))
+                .then(() => {
+                    toast.dismiss('toast-error-login')
+                    history.push('/inicio')
+                })
+                .catch((err) => {
+                    const errorMessage =
+                        err.response.data.message ?? 'Ocorreu um erro'
+
+                    toast.error(errorMessage, {
+                        role: 'alert',
+                        toastId: 'toast-error-login',
+                    })
+                })
                 .finally(() => formikHelpers.setSubmitting(false))
         },
     })
 
     return (
         <>
-            <p>{JSON.stringify(authState)}</p>
-
             <form onSubmit={formik.handleSubmit}>
                 <AppInput
                     type="email"
