@@ -11,6 +11,33 @@ export const WrapperPageTitle = styled.div`
     max-width: max-content;
 `
 
+export const Notifications = styled.div`
+    background-color: ${(props) => props.theme.bgPrimary};
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    border-radius: 50%;
+    position: absolute;
+    margin-top: -5px;
+    margin-left: 10px;
+`
+
+export const ContentNotification = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    /* background-color: green; */
+
+    span {
+        font-weight: 400;
+        font-size: 20px;
+        margin-right: 1px;
+        margin-top: 1px;
+    }
+`
+
 export const Line = styled.div<{ lineWidth: LineWidth }>`
     width: ${(props) => lineWitdhs[props.lineWidth]};
     height: 5px;

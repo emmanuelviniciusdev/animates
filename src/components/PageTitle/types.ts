@@ -6,4 +6,5 @@ export type Props = {
     children: string
     type: HeadingLevels
     lineWidth: LineWidth
+    notifications?: number
 }

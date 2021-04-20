@@ -15,6 +15,7 @@ const EsqueciMinhaSenha = lazy(() => import('../views/EsqueciMinhaSenha'))
 const Inicio = lazy(() => import('../views/Inicio'))
 const Match = lazy(() => import('../views/Match'))
 const Adocao = lazy(() => import('../views/Adocao'))
+const Mensagens = lazy(() => import('../views/Mensagens'))
 
 type PrivateRouteType = Partial<RouteProps & { redirectionPath: string }>
 
@@ -56,6 +57,10 @@ function Routes() {
                         <PrivateRoute
                             path={RoutePaths.ADOCAO}
                             component={Adocao}
+                        />
+                        <PrivateRoute
+                            path={RoutePaths.MENSAGENS}
+                            component={Mensagens}
                         />
                     </Switch>
                 </Suspense>

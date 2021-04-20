@@ -1,10 +1,16 @@
 import React from 'react'
 import { HeadingLevels, Props } from './types'
-import { Line, WrapperPageTitle } from './styles'
+import {
+    ContentNotification,
+    Line,
+    Notifications,
+    WrapperPageTitle,
+} from './styles'
 
 function PageTitle({
     type = 'h1',
     lineWidth = 'smallerThanContent',
+    notifications,
     children,
 }: Partial<Props>) {
     const HeadingTag = `${type}` as HeadingLevels
@@ -12,7 +18,18 @@ function PageTitle({
     return (
         <>
             <WrapperPageTitle className="wrapper-page-title">
-                <HeadingTag>{children}</HeadingTag>
+                <HeadingTag>
+                    {children}
+
+                    {notifications && (
+                        <Notifications>
+                            <ContentNotification>
+                                <span>{notifications}</span>
+                            </ContentNotification>
+                        </Notifications>
+                    )}
+                </HeadingTag>
+
                 <Line lineWidth={lineWidth} />
             </WrapperPageTitle>
         </>
