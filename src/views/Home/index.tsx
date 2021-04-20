@@ -2,6 +2,7 @@ import React from 'react'
 import { Header, LocalGlobalStyle, Main, Title } from './styles'
 import SimpleButton from '../../components/SimpleButton'
 import { Link } from 'react-router-dom'
+import { RoutePaths } from '../../routes'
 
 function Home() {
     return (
@@ -10,7 +11,7 @@ function Home() {
 
             <Main>
                 <Header>
-                    <Link to="/login">
+                    <Link to={RoutePaths.LOGIN}>
                         <SimpleButton>Começar</SimpleButton>
                     </Link>
                 </Header>

@@ -18,6 +18,7 @@ import { Modes as MenuPopUpModes } from '../MenuPopUp/types'
 import { useMediaQuery } from 'react-responsive'
 import { Link } from 'react-router-dom'
 import ReactTooltip from 'react-tooltip'
+import { RoutePaths } from '../../routes'
 
 function Menu() {
     const [menuPopUpMode, setMenuPopUpMode] = useState<MenuPopUpModes | null>(
@@ -53,7 +54,7 @@ function Menu() {
 
             <WrapperContent>
                 <Content>
-                    <Link to="/inicio">
+                    <Link to={RoutePaths.INICIO}>
                         <ButtonIcon
                             aria-label="Início"
                             data-for="tooltip-menu"
@@ -65,7 +66,7 @@ function Menu() {
                         </ButtonIcon>
                     </Link>
 
-                    <Link to="/match">
+                    <Link to={RoutePaths.MATCH}>
                         <ButtonIcon
                             aria-label="Match"
                             data-for="tooltip-menu"
@@ -77,7 +78,7 @@ function Menu() {
                         </ButtonIcon>
                     </Link>
 
-                    <Link to="/adocao">
+                    <Link to={RoutePaths.ADOCAO}>
                         <ButtonIcon
                             aria-label="Adoção"
                             data-for="tooltip-menu"
@@ -89,7 +90,7 @@ function Menu() {
                         </ButtonIcon>
                     </Link>
 
-                    <Link to="/mensagens">
+                    <Link to={RoutePaths.MENSAGENS}>
                         <ButtonIcon
                             aria-label="Mensagens"
                             data-for="tooltip-menu"

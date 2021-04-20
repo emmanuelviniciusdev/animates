@@ -11,6 +11,7 @@ import * as Yup from 'yup'
 import FormInputMessage from '../FormInputMessage'
 import { register } from '../../redux/ducks/auth'
 import { toast } from 'react-toastify'
+import { RoutePaths } from '../../routes'
 
 function FormRegister() {
     const dispatch = useThunkDispatch()
@@ -38,7 +39,7 @@ function FormRegister() {
             dispatch(register(values))
                 .then(() => {
                     toast.dismiss('toast-error-register')
-                    history.push('/inicio')
+                    history.push(RoutePaths.INICIO)
                 })
                 .catch((err) => {
                     const errorMessage =

@@ -13,6 +13,7 @@ import { login } from '../../redux/ducks/auth'
 import useThunkDispatch from '../../hooks/useThunkDispatch'
 import { Link, useHistory } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import { RoutePaths } from '../../routes'
 
 function FormLogin() {
     const dispatch = useThunkDispatch()
@@ -31,7 +32,7 @@ function FormLogin() {
             dispatch(login(values))
                 .then(() => {
                     toast.dismiss('toast-error-login')
-                    history.push('/inicio')
+                    history.push(RoutePaths.INICIO)
                 })
                 .catch((err) => {
                     const errorMessage =
@@ -76,7 +77,9 @@ function FormLogin() {
 
                 <ForgotPasswordArea>
                     <ForgotPasswordContent>
-                        <Link to="/recuperar-senha">esqueci minha senha</Link>
+                        <Link to={RoutePaths.RECUPERAR_SENHA}>
+                            esqueci minha senha
+                        </Link>
                         <Icon icon={questionDuotone} className="icon" />
                     </ForgotPasswordContent>
                 </ForgotPasswordArea>
@@ -88,7 +91,7 @@ function FormLogin() {
                 >
                     Entrar
                 </SimpleButton>
-                <Link to="/criar-conta">
+                <Link to={RoutePaths.CRIAR_CONTA}>
                     <SimpleButton
                         type="button"
                         btnTheme="secondary"

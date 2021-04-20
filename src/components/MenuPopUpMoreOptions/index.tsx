@@ -5,13 +5,14 @@ import userCircleDuotone from '@iconify/icons-ph/user-circle-duotone'
 import gearSixDuotone from '@iconify/icons-ph/gear-six-duotone'
 import signOutBold from '@iconify/icons-ph/sign-out-bold'
 import { useHistory } from 'react-router'
+import { RoutePaths } from '../../routes'
 
 function MenuPopUpMoreOptions() {
     const history = useHistory()
 
     const handleLogout = () => {
         localStorage.removeItem('token')
-        history.push('/login')
+        history.push(RoutePaths.LOGIN)
     }
 
     return (
