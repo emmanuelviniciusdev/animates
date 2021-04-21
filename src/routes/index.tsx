@@ -1,12 +1,7 @@
 import React, { lazy, Suspense } from 'react'
-import {
-    BrowserRouter as Router,
-    Redirect,
-    Route,
-    RouteProps,
-    Switch,
-} from 'react-router-dom'
+import { BrowserRouter as Router, Switch } from 'react-router-dom'
 import Loading from '../views/Loading'
+import AppRoute from '../components/AppRoute'
 
 const Home = lazy(() => import('../views/Home'))
 const Login = lazy(() => import('../views/Login'))
@@ -17,48 +12,49 @@ const Match = lazy(() => import('../views/Match'))
 const Adocao = lazy(() => import('../views/Adocao'))
 const Mensagens = lazy(() => import('../views/Mensagens'))
 
-type PrivateRouteType = Partial<RouteProps & { redirectionPath: string }>
-
-function PrivateRoute({
-    redirectionPath = RoutePaths.LOGIN,
-    ...rest
-}: PrivateRouteType) {
-    const userNotLoggedIn = !localStorage.getItem('token')
-
-    if (userNotLoggedIn) return <Redirect to={redirectionPath} />
-
-    return <Route {...rest} />
-}
-
 function Routes() {
     return (
         <>
             <Router>
                 <Suspense fallback={<Loading />}>
                     <Switch>
-                        <Route exact path={RoutePaths.HOME} component={Home} />
-                        <Route path={RoutePaths.LOGIN} component={Login} />
-                        <Route
+                        <AppRoute
+                            exact
+                            path={RoutePaths.HOME}
+                            component={Home}
+                        />
+                        <AppRoute
+                            mode="auth"
+                            path={RoutePaths.LOGIN}
+                            component={Login}
+                        />
+                        <AppRoute
+                            mode="auth"
                             path={RoutePaths.CRIAR_CONTA}
                             component={CriarConta}
                         />
-                        <Route
+                        <AppRoute
+                            mode="auth"
                             path={RoutePaths.RECUPERAR_SENHA}
                             component={EsqueciMinhaSenha}
                         />
-                        <PrivateRoute
+                        <AppRoute
+                            mode="private"
                             path={RoutePaths.INICIO}
                             component={Inicio}
                         />
-                        <PrivateRoute
+                        <AppRoute
+                            mode="private"
                             path={RoutePaths.MATCH}
                             component={Match}
                         />
-                        <PrivateRoute
+                        <AppRoute
+                            mode="private"
                             path={RoutePaths.ADOCAO}
                             component={Adocao}
                         />
-                        <PrivateRoute
+                        <AppRoute
+                            mode="private"
                             path={RoutePaths.MENSAGENS}
                             component={Mensagens}
                         />
