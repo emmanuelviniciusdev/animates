@@ -8,6 +8,7 @@ export const MatchList = styled.div`
     white-space: nowrap;
     overflow-x: auto;
     margin-top: -5px;
+    padding-top: 12px;
 `
 
 export const PetPictureMatchList = styled.img`

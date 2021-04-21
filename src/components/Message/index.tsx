@@ -6,8 +6,8 @@ import {
     Title,
     Text,
     MessageTime,
+    WrapperMessageNotSeenIndicator,
     MessageNotSeenIndicator,
-    MessageMetadata,
 } from './styles'
 import { Props } from './types'
 
@@ -32,10 +32,14 @@ function Message({ name, lastMessage, pictureUrl, seen }: Props) {
                         </Text>
                     </div>
 
-                    <MessageMetadata>
+                    <div>
                         <MessageTime>23:58</MessageTime>
-                        {!seen && <MessageNotSeenIndicator />}
-                    </MessageMetadata>
+                        {!seen && (
+                            <WrapperMessageNotSeenIndicator>
+                                <MessageNotSeenIndicator />
+                            </WrapperMessageNotSeenIndicator>
+                        )}
+                    </div>
                 </Body>
             </WrapperMessage>
         </>

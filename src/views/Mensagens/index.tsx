@@ -53,6 +53,7 @@ function Mensagens() {
                         <MessageList>
                             {Array.from({ length: 10 }).map((_, index) => (
                                 <Message
+                                    key={index}
                                     name="Bolinha"
                                     lastMessage="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nibh tortor, congue ut lectus viverra, placerat aliquet tellus. Mauris non ex mattis, gravida enim eget, laoreet velit."
                                     pictureUrl={bolinha}
