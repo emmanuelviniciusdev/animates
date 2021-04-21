@@ -5,6 +5,18 @@ export function setPageTitle(title: string) {
 }
 
 /**
+ * Reduces the text size to the desired number of characters.
+ *
+ * @param text Text to be reduced.
+ * @param limitSize Desired character limit.
+ */
+export function limitTextSize(text: string, limitSize: number) {
+    if (text.length <= limitSize) return text
+
+    return text.substr(0, limitSize - 3) + '...'
+}
+
+/**
  * Returns a modified instance of axios with the API base URL and authorization access
  * token applied to it.
  */

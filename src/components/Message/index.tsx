@@ -1,4 +1,5 @@
 import React from 'react'
+import { limitTextSize } from '../../shared/helpers'
 import {
     WrapperMessage,
     Body,
@@ -11,13 +12,6 @@ import {
 } from './styles'
 import { Props } from './types'
 
-// TODO: Abstract this into a helper function.
-function limitLastMessageSize(message: string) {
-    if (message.length <= 60) return message
-
-    return message.substr(0, 57) + '...'
-}
-
 function Message({ name, lastMessage, pictureUrl, seen }: Props) {
     return (
         <>
@@ -28,7 +22,7 @@ function Message({ name, lastMessage, pictureUrl, seen }: Props) {
                     <div>
                         <Title seen={seen}>{name}</Title>
                         <Text seen={seen}>
-                            {limitLastMessageSize(lastMessage)}
+                            {limitTextSize(lastMessage, 60)}
                         </Text>
                     </div>
 
