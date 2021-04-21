@@ -11,15 +11,19 @@ function PageTitle({
     type = 'h1',
     lineWidth = 'smallerThanContent',
     notifications,
+    applyFontWeightRegular = false,
     children,
 }: Partial<Props>) {
     const HeadingTag = `${type}` as HeadingLevels
 
     return (
         <>
-            <WrapperPageTitle className="wrapper-page-title">
+            <WrapperPageTitle
+                className="wrapper-page-title"
+                applyFontWeightRegular={applyFontWeightRegular}
+            >
                 <HeadingTag>
-                    {children}
+                    <span className="main-heading-content">{children}</span>
 
                     {notifications && (
                         <Notifications>

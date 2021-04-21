@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { LineWidth } from '../PageTitle/types'
+import { ApplyFontWeightRegular, LineWidth } from '../PageTitle/types'
 
 const lineWitdhs = {
     auto: 'auto',
@@ -7,8 +7,15 @@ const lineWitdhs = {
     smallerThanContent: '40%',
 }
 
-export const WrapperPageTitle = styled.div`
+export const WrapperPageTitle = styled.div<{
+    applyFontWeightRegular: ApplyFontWeightRegular
+}>`
     max-width: max-content;
+
+    .main-heading-content {
+        font-weight: ${(props) =>
+            props.applyFontWeightRegular ? '400' : 'inherit'};
+    }
 `
 
 export const Notifications = styled.div`

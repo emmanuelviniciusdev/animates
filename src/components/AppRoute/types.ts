@@ -15,7 +15,7 @@ export type AppRoute = {
 
     /**
      * Indicates the route's mode.
-     * - When the mode is 'auth' and the user is authenticated, redirects the user for 'redirectionPathForAuth'.
+     * - When the mode is 'auth' and the user is authenticated, redirects the user to 'redirectionPathForAuth'.
      * - When the mode is 'private' and the user is not authenticated, redirects the user to 'redirectionPathForPrivate'.
      * - When the mode is 'public', no redirections are made.
      */
