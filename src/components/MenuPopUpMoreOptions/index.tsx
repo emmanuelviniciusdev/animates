@@ -24,7 +24,9 @@ function MenuPopUpMoreOptions() {
                 <Text>Configurações de perfil</Text>
             </ButtonOption>
 
-            <ButtonOption>
+            <ButtonOption
+                onClick={() => history.push(RoutePaths.CONFIGURACOES_DE_CONTA)}
+            >
                 <WrapperIcon>
                     <Icon icon={gearSixDuotone} className="icon" />
                 </WrapperIcon>
