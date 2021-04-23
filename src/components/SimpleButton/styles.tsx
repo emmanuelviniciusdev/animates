@@ -6,6 +6,7 @@ const getBackgroundColor = (btnTheme: BtnTheme, theme: DefaultTheme) => {
     const backgroundColors = {
         primary: theme.bgPrimary,
         secondary: theme.bgSecondary,
+        tertiary: lighten(0.06, theme.bgDefault),
     }
 
     return backgroundColors[btnTheme]
@@ -15,6 +16,12 @@ const fontSizes = {
     sm: '14px',
     md: '18px',
     lg: '24px',
+}
+
+const fontSizesIcon = {
+    sm: '20px',
+    md: '24px',
+    lg: '30px',
 }
 
 export const Button = styled.button<{ btnSize: BtnSize; btnTheme: BtnTheme }>`
@@ -34,4 +41,14 @@ export const Button = styled.button<{ btnSize: BtnSize; btnTheme: BtnTheme }>`
         cursor: not-allowed;
         outline: none;
     }
+
+    .icon {
+        font-size: ${({ btnSize }) => fontSizesIcon[btnSize]};
+    }
+`
+
+export const ContentButton = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 8px;
 `

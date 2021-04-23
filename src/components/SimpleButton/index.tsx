@@ -1,11 +1,13 @@
 import React from 'react'
-import { Button } from './styles'
+import { Button, ContentButton } from './styles'
 import { Props } from './types'
+import { Icon } from '@iconify/react'
 
 function SimpleButton({
     btnSize = 'md',
     btnTheme = 'primary',
     isLoading = false,
+    icon,
     children,
     ...rest
 }: Partial<Props>) {
@@ -16,7 +18,10 @@ function SimpleButton({
             btnTheme={btnTheme}
             {...rest}
         >
-            {isLoading ? 'Aguarde...' : children}
+            <ContentButton>
+                {icon && <Icon icon={icon} className="icon" />}
+                <span>{isLoading ? 'Aguarde...' : children}</span>
+            </ContentButton>
         </Button>
     )
 }
