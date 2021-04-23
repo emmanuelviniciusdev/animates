@@ -11,7 +11,6 @@ export const ApplyDogAndCat1Background = createGlobalStyle`
     }
 `
 
-// TODO: Adjust padding for screen resolutions of 1440x900
 export const GeneralContent = styled.div`
     /* background: green; */
     padding: 0 30px;
@@ -24,7 +23,7 @@ export const GeneralContent = styled.div`
         margin-top: 140px;
     }
 
-    @media (min-width: 1360px) {
+    @media (min-width: 1440px) {
         padding: 0;
     }
 
