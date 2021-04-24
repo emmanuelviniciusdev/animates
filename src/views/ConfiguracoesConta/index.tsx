@@ -7,6 +7,7 @@ import { GeneralContent } from '../../styles/commonStyles'
 import SimpleButton from '../../components/SimpleButton'
 import atDuotone from '@iconify/icons-ph/at-duotone'
 import keyDuotone from '@iconify/icons-ph/key-duotone'
+import trashDuotone from '@iconify/icons-ph/trash-duotone'
 
 function ConfiguracoesConta() {
     useEffect(() => setPageTitle('Configurações de Conta'), [])
@@ -34,6 +35,13 @@ function ConfiguracoesConta() {
 
                     <Section>
                         <h2>Deletar conta</h2>
+
+                        <p style={{ margin: '30px 0 15px 0' }}>
+                            Esta ação não tem mais volta!
+                        </p>
+                        <SimpleButton icon={trashDuotone}>
+                            deletar conta
+                        </SimpleButton>
                     </Section>
                 </main>
             </GeneralContent>
