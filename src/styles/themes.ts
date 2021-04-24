@@ -1,3 +1,4 @@
+import { lighten } from 'polished'
 import { DefaultTheme } from 'styled-components'
 
 declare module 'styled-components' {
@@ -5,6 +6,7 @@ declare module 'styled-components' {
         bgDefault: string
         bgPrimary: string
         bgSecondary: string
+        bgTertiary: string
 
         colorPrimary: string
         colorSecondary: string
@@ -19,6 +21,7 @@ export const darkTheme: DefaultTheme = {
     bgDefault: '#302B2F',
     bgPrimary: '#FC4A1A',
     bgSecondary: '#232323',
+    bgTertiary: lighten(0.06, '#302B2F'),
 
     colorPrimary: '#FFF',
     colorSecondary: '#CCC',

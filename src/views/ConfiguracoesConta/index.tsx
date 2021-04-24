@@ -1,7 +1,9 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Section } from './styles'
 import Menu from '../../components/Menu'
 import PageTitle from '../../components/PageTitle'
+import ModalAlterarEmail from '../../components/ModalAlterarEmail'
+import ModalAlterarSenha from '../../components/ModalAlterarSenha'
 import { setPageTitle } from '../../shared/helpers'
 import { GeneralContent } from '../../styles/commonStyles'
 import SimpleButton from '../../components/SimpleButton'
@@ -10,6 +12,9 @@ import keyDuotone from '@iconify/icons-ph/key-duotone'
 import trashDuotone from '@iconify/icons-ph/trash-duotone'
 
 function ConfiguracoesConta() {
+    const [openModalAlterarEmail, setOpenModalAlterarEmail] = useState(false)
+    const [openModalAlterarSenha, setOpenModalAlterarSenha] = useState(false)
+
     useEffect(() => setPageTitle('Configurações de Conta'), [])
 
     return (
@@ -25,10 +30,18 @@ function ConfiguracoesConta() {
                     <Section>
                         <h2>E-mail e senha</h2>
 
-                        <SimpleButton icon={atDuotone} btnTheme="tertiary">
+                        <SimpleButton
+                            icon={atDuotone}
+                            btnTheme="tertiary"
+                            onClick={() => setOpenModalAlterarEmail(true)}
+                        >
                             alterar e-mail
                         </SimpleButton>
-                        <SimpleButton icon={keyDuotone} btnTheme="tertiary">
+                        <SimpleButton
+                            icon={keyDuotone}
+                            btnTheme="tertiary"
+                            onClick={() => setOpenModalAlterarSenha(true)}
+                        >
                             alterar senha
                         </SimpleButton>
                     </Section>
@@ -45,6 +58,18 @@ function ConfiguracoesConta() {
                     </Section>
                 </main>
             </GeneralContent>
+
+            {openModalAlterarEmail && (
+                <ModalAlterarEmail
+                    onClose={() => setOpenModalAlterarEmail(false)}
+                />
+            )}
+
+            {openModalAlterarSenha && (
+                <ModalAlterarSenha
+                    onClose={() => setOpenModalAlterarSenha(false)}
+                />
+            )}
         </>
     )
 }
