@@ -13,6 +13,7 @@ const Adocao = lazy(() => import('../views/Adocao'))
 const Mensagens = lazy(() => import('../views/Mensagens'))
 const Chat = lazy(() => import('../views/Chat'))
 const ConfiguracoesConta = lazy(() => import('../views/ConfiguracoesConta'))
+const ConfiguracoesPerfil = lazy(() => import('../views/ConfiguracoesPerfil'))
 
 function Routes() {
     return (
@@ -70,6 +71,11 @@ function Routes() {
                             path={RoutePaths.CONFIGURACOES_DE_CONTA}
                             component={ConfiguracoesConta}
                         />
+                        <AppRoute
+                            mode="private"
+                            path={RoutePaths.CONFIGURACOES_DE_PERFIL}
+                            component={ConfiguracoesPerfil}
+                        />
                     </Switch>
                 </Suspense>
             </Router>
@@ -88,6 +94,7 @@ export const RoutePaths = {
     MENSAGENS: '/mensagens',
     CHAT: (id = ':id') => `/chat/${id}`,
     CONFIGURACOES_DE_CONTA: '/configuracoes-de-conta',
+    CONFIGURACOES_DE_PERFIL: '/configuracoes-de-perfil',
 }
 
 export default Routes

@@ -17,13 +17,14 @@ function MenuPopUpMoreOptions() {
 
     return (
         <>
-            <ButtonOption>
+            <ButtonOption
+                onClick={() => history.push(RoutePaths.CONFIGURACOES_DE_PERFIL)}
+            >
                 <WrapperIcon>
                     <Icon icon={userCircleDuotone} className="icon" />
                 </WrapperIcon>
                 <Text>Configurações de perfil</Text>
             </ButtonOption>
-
             <ButtonOption
                 onClick={() => history.push(RoutePaths.CONFIGURACOES_DE_CONTA)}
             >
@@ -32,7 +33,6 @@ function MenuPopUpMoreOptions() {
                 </WrapperIcon>
                 <Text>Configurações de conta</Text>
             </ButtonOption>
-
             <ButtonOption onClick={handleLogout}>
                 <WrapperIcon>
                     <Icon icon={signOutBold} className="icon" />
