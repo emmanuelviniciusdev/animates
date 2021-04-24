@@ -19,6 +19,7 @@ export const Input = styled.input`
     border: none;
     outline: none;
     font-size: 16px;
+    width: 100%;
     height: 35px;
 `
 
