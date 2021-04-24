@@ -50,5 +50,6 @@ export const Button = styled.button<{ btnSize: BtnSize; btnTheme: BtnTheme }>`
 export const ContentButton = styled.div`
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
 `
