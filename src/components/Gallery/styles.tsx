@@ -6,7 +6,21 @@ export const GalleryContent = styled.div`
     overflow-x: auto;
     overflow-y: hidden;
     white-space: nowrap;
+    display: flex;
+    gap: 25px;
     /* background: gray; */
+`
+
+export const ButtonOpenPictureUpload = styled.button`
+    background-color: ${(props) => props.theme.bgTertiary};
+    min-width: 150px;
+    height: 100%;
+    border-radius: 5px;
+
+    .icon {
+        color: ${(props) => props.theme.colorPrimary};
+        font-size: 47px;
+    }
 `
 
 export const Image = styled.img`

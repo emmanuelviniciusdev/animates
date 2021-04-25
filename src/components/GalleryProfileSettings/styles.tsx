@@ -62,13 +62,3 @@ export const WrapperGallery = styled.div`
     display: flex;
     gap: 25px;
 `
-export const ButtonOpenPictureUpload = styled.button`
-    background-color: ${(props) => props.theme.bgTertiary};
-    border-radius: 5px;
-    width: 150px;
-
-    .icon {
-        color: ${(props) => props.theme.colorPrimary};
-        font-size: 47px;
-    }
-`

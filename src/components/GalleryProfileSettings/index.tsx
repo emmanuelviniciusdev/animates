@@ -4,12 +4,11 @@ import {
     ActionUpload,
     WrapperActionUpload,
     WrapperGallery,
-    ButtonOpenPictureUpload,
 } from './styles'
 import { Icon } from '@iconify/react'
 import cameraDuotone from '@iconify/icons-ph/camera-duotone'
 import imageDuotone from '@iconify/icons-ph/image-duotone'
-import plusBold from '@iconify/icons-ph/plus-bold'
+
 import Gallery from '../Gallery'
 
 function GalleryProfileSettings() {
@@ -18,9 +17,6 @@ function GalleryProfileSettings() {
             <NoPicturesFound>Nenhuma foto encontrada</NoPicturesFound>
 
             <WrapperGallery>
-                <ButtonOpenPictureUpload aria-label="Abrir seção de upload">
-                    <Icon icon={plusBold} className="icon" />
-                </ButtonOpenPictureUpload>
                 <Gallery mode="account-settings" />
             </WrapperGallery>
 
