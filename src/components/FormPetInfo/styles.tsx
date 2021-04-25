@@ -28,4 +28,25 @@ export const WrapperInputCheckbox = styled.div`
     align-items: center;
     gap: 5px;
     margin-bottom: 10px;
+
+    input[type='checkbox'] {
+        appearance: none;
+        width: 20px;
+        height: 20px;
+        background-color: ${(props) => props.theme.bgDefault};
+        color: ${(props) => props.theme.colorPrimary};
+        border: solid 2px ${(props) => props.theme.bgPrimary};
+        border-radius: 2px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:checked {
+            background-color: ${(props) => props.theme.bgPrimary};
+        }
+
+        &:checked:after {
+            content: '✔';
+        }
+    }
 `

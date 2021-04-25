@@ -25,7 +25,6 @@ function FormPetInfo() {
                     aria-label="sobre o pet..."
                 />
 
-                {/* TODO: Customize checkboxes' color. */}
                 <WrapperInputCheckbox>
                     <input type="checkbox" id="petIsOpenToRelationships" />
                     <label htmlFor="petIsOpenToRelationships">
