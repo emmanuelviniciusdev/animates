@@ -14,18 +14,18 @@ export const SubContent = styled.div`
     margin-bottom: 50px;
 
     &:last-child {
-        margin-bottom: 20px;
+        margin-bottom: 30px;
     }
 
-    @media (min-width: 1280px) {
+    @media (min-height: 761px) and (min-width: 1280px) {
         &:last-child {
-            margin-bottom: 100px;
+            margin-bottom: 50px;
         }
     }
 `
 
 export const WrapperButtonSave = styled.div`
-    margin-bottom: 30px;
+    margin-bottom: 50px;
 
     button {
         width: 100%;
@@ -33,17 +33,14 @@ export const WrapperButtonSave = styled.div`
 
     @media (min-width: 600px) {
         button {
-            width: 350px;
+            width: auto;
         }
     }
 
-    @media (min-width: 1280px) {
+    @media (min-height: 760px) and (min-width: 1280px) {
         position: fixed;
-        bottom: -15px;
-        right: 80px;
-
-        button {
-            width: 260px;
-        }
+        margin-bottom: 0;
+        bottom: 30px;
+        right: 100px;
     }
 `

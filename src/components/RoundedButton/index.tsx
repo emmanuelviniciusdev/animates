@@ -6,12 +6,13 @@ import { Icon } from '@iconify/react'
 function RoundedButton({
     isLoading = false,
     icon,
+    hasShadow = false,
     children,
     ...rest
 }: Partial<Props>) {
     return (
         <>
-            <Button disabled={isLoading} {...rest}>
+            <Button disabled={isLoading} hasShadow={hasShadow} {...rest}>
                 <ContentButton>
                     {icon && <Icon icon={icon} className="icon" />}
                     <span>{isLoading ? 'Aguarde...' : children}</span>

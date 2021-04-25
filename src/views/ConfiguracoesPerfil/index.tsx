@@ -54,9 +54,8 @@ function ConfiguracoesConta() {
                         </Content>
                     )}
 
-                    {/* TODO: Adjust weird position on the screen. */}
                     <WrapperButtonSave>
-                        <RoundedButton icon={floppyDiskDuotone}>
+                        <RoundedButton hasShadow icon={floppyDiskDuotone}>
                             salvar alterações
                         </RoundedButton>
                     </WrapperButtonSave>
