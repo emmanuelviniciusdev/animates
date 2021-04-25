@@ -2,6 +2,7 @@ import { lighten } from 'polished'
 import styled from 'styled-components'
 
 export const Card = styled.div`
+    width: 95%;
     max-width: 450px;
     padding: 20px;
     background-color: ${(props) => lighten(0.035, props.theme.bgDefault)};
