@@ -1,5 +1,5 @@
 import { lighten } from 'polished'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { Seen } from './types'
 
 type StyleProps = { seen: Seen }
