@@ -45,7 +45,6 @@ function MatchCard() {
                     />
                 </Actions>
 
-                {/* TODO: Define yellow color. */}
                 <ReportButton
                     aria-label="Denunciar"
                     data-for="tooltip-match-card"

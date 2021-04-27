@@ -31,7 +31,7 @@ export const ReportButton = styled.button`
     background: transparent;
 
     .icon {
-        color: ${(props) => props.theme.colorPrimary};
+        color: #ffaa2b;
         font-size: 30px;
     }
 `

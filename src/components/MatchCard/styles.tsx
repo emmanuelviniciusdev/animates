@@ -102,6 +102,6 @@ export const ReportButton = styled.button`
 
     .icon {
         font-size: 40px;
-        color: ${(props) => props.theme.colorPrimary};
+        color: #ffaa2b;
     }
 `
