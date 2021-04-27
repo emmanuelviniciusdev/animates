@@ -14,6 +14,7 @@ const Mensagens = lazy(() => import('../views/Mensagens'))
 const Chat = lazy(() => import('../views/Chat'))
 const ConfiguracoesConta = lazy(() => import('../views/ConfiguracoesConta'))
 const ConfiguracoesPerfil = lazy(() => import('../views/ConfiguracoesPerfil'))
+const Pagina404 = lazy(() => import('../views/Pagina404'))
 
 function Routes() {
     return (
@@ -76,6 +77,7 @@ function Routes() {
                             path={RoutePaths.CONFIGURACOES_DE_PERFIL}
                             component={ConfiguracoesPerfil}
                         />
+                        <AppRoute path="*" component={Pagina404} />
                     </Switch>
                 </Suspense>
             </Router>
