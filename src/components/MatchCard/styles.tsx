@@ -1,6 +1,15 @@
 import { lighten } from 'polished'
 import styled from 'styled-components'
 
+export const WrapperCard = styled.div`
+    width: 100%;
+    /* background-color: green; */
+
+    &:hover {
+        cursor: grab;
+    }
+`
+
 export const Card = styled.div`
     display: flex;
     flex-direction: column;

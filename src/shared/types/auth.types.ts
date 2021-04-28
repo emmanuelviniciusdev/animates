@@ -1,7 +1,3 @@
-export type ResponseError = {
-    message: string
-}
-
 export type LoginData = {
     email: string
     password: string
