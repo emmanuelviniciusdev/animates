@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from 'react'
-import { BrowserRouter as Router, Switch } from 'react-router-dom'
+import { HashRouter as Router, Switch } from 'react-router-dom'
 import Loading from '../views/Loading'
 import AppRoute from '../components/AppRoute'
 

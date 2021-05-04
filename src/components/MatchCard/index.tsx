@@ -25,10 +25,12 @@ function MatchCard() {
         event: MouseEvent | TouchEvent | PointerEvent,
         info: PanInfo
     ) => {
-        toast.dismiss('match-request-sent')
+        const petWasLoved = info.offset.x >= 180 && info.point.x !== 0
+        const petWasNotLoved = info.offset.x <= -180 && info.point.x !== 0
 
-        const petWasLoved = info.offset.x >= 250
-        const petWasNotLoved = info.offset.x <= -250
+        const vibrateDevice = petWasLoved || petWasNotLoved
+
+        if (vibrateDevice) window.navigator.vibrate(200)
 
         if (petWasLoved) {
             toast.dark(
