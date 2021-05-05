@@ -5,10 +5,7 @@ import { PetInfo } from '../../shared/types/pet.types'
  * Action types
  */
 
-export const Types = {
-    LOGIN: 'auth/login',
-    LOGOUT: 'auth/logout',
-}
+export const Types = {}
 
 /**
  * Reducer

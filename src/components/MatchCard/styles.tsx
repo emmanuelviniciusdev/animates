@@ -1,57 +1,6 @@
 import { lighten } from 'polished'
 import styled from 'styled-components'
 
-// TODO: apply placeholder loading effect.
-export const SkeletonCard = styled.div`
-    /* background-color: green; */
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-    position: relative;
-    padding: 50px 0;
-
-    .picture,
-    .info,
-    .action .btn,
-    .report-btn {
-        background-color: ${(props) => lighten(0.09, props.theme.bgDefault)};
-    }
-
-    .picture {
-        width: 300px;
-        height: 233px;
-        border-radius: 5px;
-    }
-
-    .info {
-        width: 320px;
-        height: 70px;
-        border-radius: 30px;
-    }
-
-    .action {
-        display: flex;
-        gap: 25px;
-
-        .btn {
-            width: 90px;
-            height: 50px;
-            border-radius: 5px;
-        }
-    }
-
-    .report-btn {
-        position: absolute;
-        top: -15px;
-        right: 20px;
-        width: 52px;
-        height: 45px;
-        border-radius: 5px;
-    }
-`
-
 export const WrapperCard = styled.div`
     width: 100%;
     /* background-color: green; */

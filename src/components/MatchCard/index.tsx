@@ -7,7 +7,6 @@ import {
     InformationSeparator,
     Picture,
     ReportButton,
-    SkeletonCard,
 } from './styles'
 import tobby from '../../assets/images/tobby.jpg'
 import { Icon } from '@iconify/react'
@@ -18,124 +17,118 @@ import CardButton from '../CardButton'
 import ReactTooltip from 'react-tooltip'
 import { motion, PanInfo } from 'framer-motion'
 import { toast } from 'react-toastify'
+import { Props } from './types'
+import useThunkDispatch from '../../hooks/useThunkDispatch'
+import { match } from '../../redux/ducks/match'
 
-function MatchCard() {
+function MatchCard({ pet }: Props) {
+    const dispatch = useThunkDispatch()
     const [cardWhileDragRotate, setCardWhileDragRotate] = useState(0)
+
+    const lovePet = () => {
+        toast.dark(
+            () => (
+                <span>
+                    ❤️ Solicitação de match enviada com sucesso para o(a){' '}
+                    <b>{pet.name}!</b>
+                </span>
+            ),
+            {
+                hideProgressBar: true,
+                position: 'top-right',
+            }
+        )
+
+        dispatch(match({ petId: pet.id, action: 'love' }))
+    }
+
+    const skipPet = () => {
+        dispatch(match({ petId: pet.id, action: 'skip' }))
+    }
 
     const matchProcess = (
         event: MouseEvent | TouchEvent | PointerEvent,
         info: PanInfo
     ) => {
         const petWasLoved = info.offset.x >= 180 && info.point.x !== 0
-        const petWasNotLoved = info.offset.x <= -180 && info.point.x !== 0
+        const petWasSkipped = info.offset.x <= -180 && info.point.x !== 0
 
-        const vibrateDevice = petWasLoved || petWasNotLoved
+        const vibrateDevice = petWasLoved || petWasSkipped
 
-        if (vibrateDevice) window.navigator.vibrate(200)
+        if (vibrateDevice) window.navigator.vibrate(100)
 
-        if (petWasLoved) {
-            toast.dark(
-                () => (
-                    <span>
-                        ❤️ Solicitação de match enviada com sucesso para o(a){' '}
-                        <b>Tobby!</b>
-                    </span>
-                ),
-                {
-                    hideProgressBar: true,
-                    position: 'top-right',
-                }
-            )
-        } else if (petWasNotLoved) {
-            console.log('usuário não amou o pet')
-        }
+        if (petWasLoved) lovePet()
+
+        if (petWasSkipped) skipPet()
     }
-
-    /**
-     * debug
-     */
-    const [showSkeleton, setShowSkeleton] = useState(true)
 
     return (
         <>
             <ReactTooltip id="tooltip-match-card" effect="solid" />
 
-            {showSkeleton && (
-                <SkeletonCard>
-                    <div className="picture" />
-                    <div className="info" />
-                    <div className="action">
-                        <div className="btn" />
-                        <div className="btn" />
-                    </div>
-                    <div className="report-btn" />
-                </SkeletonCard>
-            )}
+            <>
+                <motion.div
+                    drag="x"
+                    dragConstraints={{
+                        left: 0,
+                        right: 0,
+                        top: 0,
+                        bottom: 0,
+                    }}
+                    dragElastic={0.7}
+                    whileDrag={{
+                        rotate: cardWhileDragRotate,
+                        cursor: 'grabbing',
+                    }}
+                    onDrag={(event, info) =>
+                        setCardWhileDragRotate(info.offset.x >= 0 ? 5 : -5)
+                    }
+                    onDragEnd={matchProcess}
+                >
+                    <WrapperCard>
+                        <Card>
+                            <Picture
+                                src={pet.photoUrl}
+                                alt={`Foto de perfil do(a) ${pet.name}`}
+                            />
 
-            {!showSkeleton && (
-                <>
-                    <motion.div
-                        drag="x"
-                        dragConstraints={{
-                            left: 0,
-                            right: 0,
-                            top: 0,
-                            bottom: 0,
-                        }}
-                        dragElastic={0.7}
-                        whileDrag={{
-                            rotate: cardWhileDragRotate,
-                            cursor: 'grabbing',
-                        }}
-                        onDrag={(event, info) =>
-                            setCardWhileDragRotate(info.offset.x >= 0 ? 5 : -5)
-                        }
-                        onDragEnd={matchProcess}
-                    >
-                        <WrapperCard>
-                            <Card>
-                                <Picture
-                                    src={tobby}
-                                    alt="Foto de perfil do(a) Tobby"
-                                />
+                            <Information>
+                                <span>{pet.name}</span>
+                                <InformationSeparator />
 
-                                <Information>
-                                    <span>Tobby</span>
-                                    <InformationSeparator />
-                                    <span>3 meses</span>
-                                </Information>
+                                {/* TODO: Calculate pet's age. */}
+                                <span>3 meses</span>
+                            </Information>
 
-                                <Actions>
-                                    <CardButton
-                                        aria-label="Não amar"
-                                        data-tip="Não amar"
-                                        data-for="tooltip-match-card"
-                                        icon={xBold}
-                                    />
-                                    <CardButton
-                                        aria-label="Amar"
-                                        data-tip="Amar"
-                                        data-for="tooltip-match-card"
-                                        icon={heartFill}
-                                        hasIconHeart={true}
-                                    />
-                                </Actions>
-
-                                <ReportButton
-                                    aria-label="Denunciar"
+                            <Actions>
+                                <CardButton
+                                    aria-label="Não amar"
+                                    data-tip="Não amar"
                                     data-for="tooltip-match-card"
-                                    data-tip="Denunciar"
-                                >
-                                    <Icon
-                                        icon={warningDuotone}
-                                        className="icon"
-                                    />
-                                </ReportButton>
-                            </Card>
-                        </WrapperCard>
-                    </motion.div>
-                </>
-            )}
+                                    icon={xBold}
+                                    onClick={() => skipPet()}
+                                />
+                                <CardButton
+                                    aria-label="Amar"
+                                    data-tip="Amar"
+                                    data-for="tooltip-match-card"
+                                    icon={heartFill}
+                                    hasIconHeart={true}
+                                    onClick={() => lovePet()}
+                                />
+                            </Actions>
+
+                            <ReportButton
+                                aria-label="Denunciar"
+                                data-for="tooltip-match-card"
+                                data-tip="Denunciar"
+                            >
+                                <Icon icon={warningDuotone} className="icon" />
+                            </ReportButton>
+                        </Card>
+                    </WrapperCard>
+                </motion.div>
+            </>
         </>
     )
 }

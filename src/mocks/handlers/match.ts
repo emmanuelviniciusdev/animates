@@ -1,10 +1,12 @@
 import { rest } from 'msw'
 import { ResponseSuccess, ResponseError } from '../../shared/types/api.types'
-import { MatchData } from '../../shared/types/match'
+import { MatchData, Pet } from '../../shared/types/match.types'
 
 const apiUrl = process.env.REACT_APP_BASE_API_URL
 
 /**
+ * Endpoint: "/match".
+ *
  * Envia um objeto "MatchData".
  *
  * Em caso de:
@@ -30,4 +32,61 @@ export const match = rest.post<Partial<MatchData>>(
     }
 )
 
-export const handlers = []
+/**
+ * Endpoint: "/get_next_pet".
+ *
+ * Não envia nada. Próximo pet é detectado usando o ID do usuário que está dentro
+ * do token de acesso.
+ *
+ * Em caso de:
+ * - Sucesso: retorna um "ResponseSuccess"
+ * - Erro: retorna um "ResponseError"
+ */
+const fakePets: Pet[] = [
+    {
+        id: '1',
+        name: 'Tobby',
+        photoUrl:
+            'https://direct.rhapsody.com/imageserver/images/alb.468470225/500x500.jpg',
+        dateOfBirth: new Date(),
+    },
+    {
+        id: '2',
+        name: 'Bolinha',
+        photoUrl: 'https://i.redd.it/s0rrluzbe1v01.jpg',
+        dateOfBirth: new Date(),
+    },
+    {
+        id: '3',
+        name: 'Tobias',
+        photoUrl:
+            'https://static.boredpanda.com/blog/wp-content/uploads/2021/01/happy-doggo-60101d7be4631__700.jpg',
+        dateOfBirth: new Date(),
+    },
+]
+
+let fakePetsIndex = -1
+
+export const getNextPet = rest.post(
+    `${apiUrl}/get_next_pet`,
+    (req, res, ctx) => {
+        fakePetsIndex++
+
+        return new Promise((resolve) => {
+            setTimeout(
+                () =>
+                    resolve(
+                        res(
+                            ctx.status(200),
+                            ctx.json({
+                                data: fakePets[fakePetsIndex] ?? null,
+                            } as ResponseSuccess)
+                        )
+                    ),
+                2000
+            )
+        })
+    }
+)
+
+export const handlers = [match, getNextPet]
