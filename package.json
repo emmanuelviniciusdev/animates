@@ -21,6 +21,7 @@
     "formik": "^2.2.6",
     "framer-motion": "^4.1.11",
     "inputmask": "^5.0.5",
+    "moment": "^2.29.1",
     "msw": "^0.28.1",
     "polished": "^4.1.1",
     "react": "^17.0.1",
