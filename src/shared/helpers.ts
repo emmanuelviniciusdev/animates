@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { toast } from 'react-toastify'
 
 export function setPageTitle(title: string) {
     document.title = title
@@ -34,4 +35,17 @@ export function appAxios() {
     }
 
     return modifiedAxios
+}
+
+/**
+ * Handles regular error responses of HTTP requests.
+ */
+export function catchAndShowErrorMessage(error: any, toastId: string) {
+    const errorMessage = error.response.data.message ?? 'Ocorreu um erro'
+
+    toast.error(errorMessage, {
+        role: 'alert',
+        toastId,
+        autoClose: false,
+    })
 }

@@ -8,7 +8,6 @@ import {
     Picture,
     ReportButton,
 } from './styles'
-import tobby from '../../assets/images/tobby.jpg'
 import { Icon } from '@iconify/react'
 import heartFill from '@iconify/icons-ph/heart-fill'
 import xBold from '@iconify/icons-ph/x-bold'
@@ -19,11 +18,25 @@ import { motion, PanInfo } from 'framer-motion'
 import { toast } from 'react-toastify'
 import { Props } from './types'
 import useThunkDispatch from '../../hooks/useThunkDispatch'
-import { match } from '../../redux/ducks/match'
+import { match, setCurrentPet } from '../../redux/ducks/match'
+import { catchAndShowErrorMessage } from '../../shared/helpers'
+import moment from 'moment'
 
 function MatchCard({ pet }: Props) {
     const dispatch = useThunkDispatch()
     const [cardWhileDragRotate, setCardWhileDragRotate] = useState(0)
+
+    const getPetAgeText = () => {
+        const petAgeYears = moment().diff(pet.dateOfBirth, 'years')
+        const petAgeMonths = moment().diff(pet.dateOfBirth, 'months')
+
+        const petAgeYearsText = petAgeYears > 1 ? 'anos' : 'ano'
+        const petAgeMonthsText = petAgeMonths > 1 ? 'meses' : 'mês'
+
+        if (petAgeYears > 0) return petAgeYears + ' ' + petAgeYearsText
+
+        return petAgeMonths + ' ' + petAgeMonthsText
+    }
 
     const lovePet = () => {
         toast.dark(
@@ -39,11 +52,20 @@ function MatchCard({ pet }: Props) {
             }
         )
 
-        dispatch(match({ petId: pet.id, action: 'love' }))
+        dispatch(match({ petId: pet.id, action: 'love' })).catch(
+            handleMatchError
+        )
     }
 
     const skipPet = () => {
-        dispatch(match({ petId: pet.id, action: 'skip' }))
+        dispatch(match({ petId: pet.id, action: 'skip' })).catch(
+            handleMatchError
+        )
+    }
+
+    const handleMatchError = (error: any) => {
+        dispatch(setCurrentPet(null))
+        catchAndShowErrorMessage(error, 'toast-error-match-card')
     }
 
     const matchProcess = (
@@ -96,8 +118,7 @@ function MatchCard({ pet }: Props) {
                                 <span>{pet.name}</span>
                                 <InformationSeparator />
 
-                                {/* TODO: Calculate pet's age. */}
-                                <span>3 meses</span>
+                                <span>{getPetAgeText()}</span>
                             </Information>
 
                             <Actions>

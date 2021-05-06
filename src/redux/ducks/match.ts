@@ -71,11 +71,11 @@ export function getNextPet() {
     }
 }
 
-function setCurrentPet(pet: Pet) {
+export function setCurrentPet(pet: Pet | null) {
     return { type: Types.SET_CURRENT_PET, payload: pet }
 }
 
-function setLoadingCurrentPet(state: boolean) {
+export function setLoadingCurrentPet(state: boolean) {
     return { type: Types.SET_LOADING_CURRENT_PET, payload: state }
 }
 

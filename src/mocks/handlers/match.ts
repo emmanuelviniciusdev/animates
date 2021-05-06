@@ -48,20 +48,20 @@ const fakePets: Pet[] = [
         name: 'Tobby',
         photoUrl:
             'https://direct.rhapsody.com/imageserver/images/alb.468470225/500x500.jpg',
-        dateOfBirth: new Date(),
+        dateOfBirth: new Date('2021-01-01'),
     },
     {
         id: '2',
         name: 'Bolinha',
         photoUrl: 'https://i.redd.it/s0rrluzbe1v01.jpg',
-        dateOfBirth: new Date(),
+        dateOfBirth: new Date('2019-06-20'),
     },
     {
         id: '3',
         name: 'Tobias',
         photoUrl:
             'https://static.boredpanda.com/blog/wp-content/uploads/2021/01/happy-doggo-60101d7be4631__700.jpg',
-        dateOfBirth: new Date(),
+        dateOfBirth: new Date('2011-03-10'),
     },
 ]
 
@@ -73,18 +73,27 @@ export const getNextPet = rest.post(
         fakePetsIndex++
 
         return new Promise((resolve) => {
-            setTimeout(
-                () =>
-                    resolve(
-                        res(
-                            ctx.status(200),
-                            ctx.json({
-                                data: fakePets[fakePetsIndex] ?? null,
-                            } as ResponseSuccess)
-                        )
-                    ),
-                2000
-            )
+            setTimeout(() => {
+                // resolve(
+                //     res(
+                //         ctx.status(400),
+                //         ctx.json({
+                //             error: true,
+                //             message:
+                //                 'Não foi possível retornar um novo pet. Por favor, tente novamente mais tarde.',
+                //         } as ResponseError)
+                //     )
+                // )
+
+                resolve(
+                    res(
+                        ctx.status(200),
+                        ctx.json({
+                            data: fakePets[fakePetsIndex] ?? null,
+                        } as ResponseSuccess)
+                    )
+                )
+            }, 2000)
         })
     }
 )
