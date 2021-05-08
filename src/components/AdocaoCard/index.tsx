@@ -13,8 +13,12 @@ import { Icon } from '@iconify/react'
 import heartFill from '@iconify/icons-ph/heart-fill'
 import warningDuotone from '@iconify/icons-ph/warning-duotone'
 import ReactTooltip from 'react-tooltip'
+import { useHistory } from 'react-router'
+import { RoutePaths } from '../../routes'
 
 function AdocaoCard() {
+    const history = useHistory()
+
     return (
         <>
             <ReactTooltip id="tooltip-adocao-card" effect="solid" />
@@ -35,7 +39,11 @@ function AdocaoCard() {
                 </PetInformation>
 
                 <Actions>
-                    <CardButton icon={heartFill} hasIconHeart={true}>
+                    <CardButton
+                        icon={heartFill}
+                        hasIconHeart={true}
+                        onClick={() => history.push(RoutePaths.CHAT('1'))}
+                    >
                         Adotar
                     </CardButton>
                     <ReportButton
