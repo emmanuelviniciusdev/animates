@@ -4,7 +4,7 @@ export const Content = styled.div`
     width: max-content;
     padding: 5px 10px;
     border-radius: 5px;
-    background: ${(props) => props.theme.bgDefault};
+    background: ${(props) => props.theme.bgTertiary};
     color: ${(props) => props.theme.colorPrimary};
     font-weight: bold;
     font-size: 14px;
