@@ -19,7 +19,7 @@ import { toast } from 'react-toastify'
 import { Props } from './types'
 import useThunkDispatch from '../../hooks/useThunkDispatch'
 import { match, setCurrentPet } from '../../redux/ducks/match'
-import { catchAndShowErrorMessage } from '../../shared/helpers'
+import { handleRegularErrorMessage } from '../../shared/helpers'
 import moment from 'moment'
 
 function MatchCard({ pet }: Props) {
@@ -65,7 +65,7 @@ function MatchCard({ pet }: Props) {
 
     const handleMatchError = (error: any) => {
         dispatch(setCurrentPet(null))
-        catchAndShowErrorMessage(error, 'toast-error-match-card')
+        handleRegularErrorMessage(error, 'toast-error-match-card')
     }
 
     const matchProcess = (

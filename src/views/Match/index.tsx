@@ -4,7 +4,7 @@ import PageTitle from '../../components/PageTitle'
 import MatchCard from '../../components/MatchCard'
 import LoadingMatchCard from '../../components/LoadingMatchCard'
 import NoPetsMatchCard from '../../components/NoPetsMatchCard'
-import { catchAndShowErrorMessage, setPageTitle } from '../../shared/helpers'
+import { handleRegularErrorMessage, setPageTitle } from '../../shared/helpers'
 import { GeneralContent } from '../../styles/commonStyles'
 import { Content } from './styles'
 import useThunkDispatch from '../../hooks/useThunkDispatch'
@@ -22,7 +22,7 @@ function Match() {
 
     useEffect(() => {
         dispatch(getNextPet()).catch((err) =>
-            catchAndShowErrorMessage(err, 'toast-error-match')
+            handleRegularErrorMessage(err, 'toast-error-match')
         )
     }, [dispatch])
 

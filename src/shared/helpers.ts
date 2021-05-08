@@ -40,7 +40,7 @@ export function appAxios() {
 /**
  * Handles regular error responses of HTTP requests.
  */
-export function catchAndShowErrorMessage(error: any, toastId: string) {
+export function handleRegularErrorMessage(error: any, toastId: string) {
     const errorMessage = error.response.data.message ?? 'Ocorreu um erro'
 
     toast.error(errorMessage, {
