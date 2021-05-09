@@ -21,10 +21,12 @@ import useThunkDispatch from '../../hooks/useThunkDispatch'
 import { match, setCurrentPet } from '../../redux/ducks/match'
 import { handleRegularErrorMessage } from '../../shared/helpers'
 import moment from 'moment'
+import ReportModal from '../ReportModal'
 
 function MatchCard({ pet }: Props) {
     const dispatch = useThunkDispatch()
     const [cardWhileDragRotate, setCardWhileDragRotate] = useState(0)
+    const [openReportModal, setOpenReportModal] = useState(false)
 
     const getPetAgeText = () => {
         const petAgeYears = moment().diff(pet.dateOfBirth, 'years')
@@ -143,6 +145,7 @@ function MatchCard({ pet }: Props) {
                                 aria-label="Denunciar"
                                 data-for="tooltip-match-card"
                                 data-tip="Denunciar"
+                                onClick={() => setOpenReportModal(true)}
                             >
                                 <Icon icon={warningDuotone} className="icon" />
                             </ReportButton>
@@ -150,6 +153,10 @@ function MatchCard({ pet }: Props) {
                     </WrapperCard>
                 </motion.div>
             </>
+
+            {openReportModal && (
+                <ReportModal onClose={() => setOpenReportModal(false)} />
+            )}
         </>
     )
 }

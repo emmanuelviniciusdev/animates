@@ -79,6 +79,7 @@ function FormPetInfo() {
                     />
                 )}
 
+                {/* TODO: Replace to "AppTextarea" component. */}
                 <Textarea
                     placeholder="sobre o pet..."
                     aria-label="sobre o pet..."

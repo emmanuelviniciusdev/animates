@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
     PetInformation,
     Actions,
@@ -9,6 +9,7 @@ import {
 } from './styles'
 import Gallery from '../Gallery'
 import CardButton from '../CardButton'
+import ReportModal from '../ReportModal'
 import { Icon } from '@iconify/react'
 import heartFill from '@iconify/icons-ph/heart-fill'
 import warningDuotone from '@iconify/icons-ph/warning-duotone'
@@ -18,6 +19,7 @@ import { RoutePaths } from '../../routes'
 
 function AdocaoCard() {
     const history = useHistory()
+    const [openReportModal, setOpenReportModal] = useState(false)
 
     return (
         <>
@@ -50,11 +52,16 @@ function AdocaoCard() {
                         aria-label="Denunciar"
                         data-for="tooltip-adocao-card"
                         data-tip="Denunciar"
+                        onClick={() => setOpenReportModal(true)}
                     >
                         <Icon icon={warningDuotone} className="icon" />
                     </ReportButton>
                 </Actions>
             </Card>
+
+            {openReportModal && (
+                <ReportModal onClose={() => setOpenReportModal(false)} />
+            )}
         </>
     )
 }
