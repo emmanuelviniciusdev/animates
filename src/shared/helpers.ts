@@ -1,4 +1,5 @@
 import axios from 'axios'
+import moment from 'moment'
 import { toast } from 'react-toastify'
 
 export function setPageTitle(title: string) {
@@ -48,4 +49,11 @@ export function handleRegularErrorMessage(error: any, toastId: string) {
         toastId,
         autoClose: false,
     })
+}
+
+/**
+ * Transforms Yup.date() format to "DD/MM/YYYY".
+ */
+export function transformYupDate(value: Date, originalValue: string) {
+    return moment(originalValue, 'DD/MM/YYYY', true).toDate()
 }

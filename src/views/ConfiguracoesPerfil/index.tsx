@@ -6,9 +6,8 @@ import GalleryProfileSettings from '../../components/GalleryProfileSettings'
 import FormPetInfo from '../../components/FormPetInfo'
 import { setPageTitle } from '../../shared/helpers'
 import { GeneralContent } from '../../styles/commonStyles'
-import { Content, SubContent, WrapperButtonSave } from './styles'
+import { Content, SubContent } from './styles'
 import plusBold from '@iconify/icons-ph/plus-bold'
-import floppyDiskDuotone from '@iconify/icons-ph/floppy-disk-duotone'
 
 function ConfiguracoesConta() {
     useEffect(() => setPageTitle('Configurações de Perfil'), [])
@@ -53,12 +52,6 @@ function ConfiguracoesConta() {
                             </SubContent>
                         </Content>
                     )}
-
-                    <WrapperButtonSave>
-                        <RoundedButton hasShadow icon={floppyDiskDuotone}>
-                            salvar alterações
-                        </RoundedButton>
-                    </WrapperButtonSave>
                 </main>
             </GeneralContent>
         </>

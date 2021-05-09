@@ -50,3 +50,25 @@ export const WrapperInputCheckbox = styled.div`
         }
     }
 `
+
+export const WrapperButtonSave = styled.div`
+    margin-top: 30px;
+    margin-bottom: 50px;
+
+    button {
+        width: 100%;
+    }
+
+    @media (min-width: 600px) {
+        button {
+            width: auto;
+        }
+    }
+
+    @media (min-height: 760px) and (min-width: 1280px) {
+        position: fixed;
+        margin-bottom: 0;
+        bottom: 30px;
+        right: 100px;
+    }
+`
