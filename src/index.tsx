@@ -14,7 +14,9 @@ import 'react-toastify/dist/ReactToastify.css'
 /**
  * Enable API mocking requests
  */
-if (process.env.NODE_ENV === 'development') {
+const enableMocksForAlphaRelease = true
+
+if (process.env.NODE_ENV === 'development' || enableMocksForAlphaRelease) {
     const { worker } = require('./mocks/browser')
     worker.start()
 }
