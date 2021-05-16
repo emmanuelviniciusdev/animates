@@ -1,5 +1,5 @@
 import { Action } from '../../shared/types/duck.types'
-import { PetInfo } from '../../shared/types/pet.types'
+import { Pet } from '../../shared/types/pet.types'
 
 /**
  * Action types
@@ -14,7 +14,7 @@ export const Types = {}
 export type StateType = {
     petPicturesToUpload: Array<any>
     petPictures: Array<any>
-    petInfo: PetInfo | null
+    petInfo: Pet | null
 }
 
 const initialState: StateType = {

@@ -1,6 +1,7 @@
 import { rest } from 'msw'
 import { ResponseSuccess, ResponseError } from '../../shared/types/api.types'
-import { MatchData, Pet } from '../../shared/types/match.types'
+import { MatchData } from '../../shared/types/match.types'
+import { Pet } from '../../shared/types/pet.types'
 
 const apiUrl = process.env.REACT_APP_BASE_API_URL
 
@@ -44,24 +45,27 @@ export const match = rest.post<Partial<MatchData>>(
  */
 const fakePets: Pet[] = [
     {
-        id: '1',
+        id: 1,
         name: 'Tobby',
         photoUrl:
             'https://direct.rhapsody.com/imageserver/images/alb.468470225/500x500.jpg',
         dateOfBirth: new Date('2021-01-01'),
+        description: '',
     },
     {
-        id: '2',
+        id: 2,
         name: 'Bolinha',
         photoUrl: 'https://i.redd.it/s0rrluzbe1v01.jpg',
         dateOfBirth: new Date('2019-06-20'),
+        description: '',
     },
     {
-        id: '3',
+        id: 3,
         name: 'Tobias',
         photoUrl:
             'https://static.boredpanda.com/blog/wp-content/uploads/2021/01/happy-doggo-60101d7be4631__700.jpg',
         dateOfBirth: new Date('2011-03-10'),
+        description: '',
     },
 ]
 

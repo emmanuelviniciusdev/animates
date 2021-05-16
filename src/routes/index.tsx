@@ -94,7 +94,7 @@ export const RoutePaths = {
     MATCH: '/match',
     ADOCAO: '/adocao',
     MENSAGENS: '/mensagens',
-    CHAT: (id = ':id') => `/chat/${id}`,
+    CHAT: (id: string | number = ':id') => `/chat/${id}`,
     CONFIGURACOES_DE_CONTA: '/configuracoes-de-conta',
     CONFIGURACOES_DE_PERFIL: '/configuracoes-de-perfil',
 }

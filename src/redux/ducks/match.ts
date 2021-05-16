@@ -1,5 +1,6 @@
 import { Action } from '../../shared/types/duck.types'
-import { MatchData, Pet } from '../../shared/types/match.types'
+import { MatchData } from '../../shared/types/match.types'
+import { Pet } from '../../shared/types/pet.types'
 import { appAxios } from '../../shared/helpers'
 import { Dispatch } from 'redux'
 

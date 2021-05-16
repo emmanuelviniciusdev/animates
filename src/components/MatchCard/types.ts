@@ -1,4 +1,4 @@
-import { Pet } from '../../shared/types/match.types'
+import { Pet } from '../../shared/types/pet.types'
 
 export type Props = {
     pet: Pet

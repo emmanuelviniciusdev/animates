@@ -2,48 +2,67 @@ import React, { useEffect } from 'react'
 import Menu from '../../components/Menu'
 import PageTitle from '../../components/PageTitle'
 import Message from '../../components/Message'
+import LatestMatchesList from '../../components/LatestMatchesList'
 import { setPageTitle } from '../../shared/helpers'
-import { GeneralContent } from '../../styles/commonStyles'
 import {
-    PetPictureMatchList,
-    MatchList,
+    GeneralContent,
+    PlaceholderLoadingItem,
+} from '../../styles/commonStyles'
+import {
     WrapperMessageList,
     MessageList,
+    WrapperLatestMatchesList,
 } from './styles'
-import woofleDog from '../../assets/images/woofle-dog.jpg'
 import bolinha from '../../assets/images/bolinha.jpg'
-import ReactTooltip from 'react-tooltip'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../redux/store'
+import useThunkDispatch from '../../hooks/useThunkDispatch'
+import { getListMessages } from '../../redux/ducks/messages'
 
 function Mensagens() {
-    useEffect(() => setPageTitle('Mensagens'), [])
+    const dispatch = useThunkDispatch()
+
+    const {
+        latestMatches,
+        messages,
+        loadingMessages,
+        totalMessages,
+    } = useSelector((state: RootState) => state.messages)
+
+    const handleScroll = () => {
+        console.log('aaa')
+    }
+
+    useEffect(() => {
+        setPageTitle('Mensagens')
+
+        window.addEventListener('scroll', handleScroll)
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll)
+        }
+    }, [])
+
+    useEffect(() => {
+        // TODO: Catch errors.
+        dispatch(getListMessages())
+    }, [dispatch])
 
     return (
         <>
-            <ReactTooltip
-                id="tooltip-mensagens"
-                place="bottom"
-                effect="solid"
-            />
-
             <header>
                 <Menu />
             </header>
 
             <GeneralContent>
                 <section>
-                    <PageTitle notifications={10}>Novos matches</PageTitle>
+                    <PageTitle notifications={latestMatches.pets.length}>
+                        Novos matches
+                    </PageTitle>
 
-                    <MatchList>
-                        {Array.from({ length: 10 }).map((_, index) => (
-                            <PetPictureMatchList
-                                src={woofleDog}
-                                alt="Woofle Dog"
-                                data-for="tooltip-mensagens"
-                                data-tip="Woofle Dog"
-                                key={index}
-                            />
-                        ))}
-                    </MatchList>
+                    <WrapperLatestMatchesList>
+                        <LatestMatchesList />
+                    </WrapperLatestMatchesList>
                 </section>
 
                 <main>
@@ -51,13 +70,21 @@ function Mensagens() {
                         <h2>Mensagens</h2>
 
                         <MessageList>
-                            {Array.from({ length: 10 }).map((_, index) => (
+                            {/* First loading animation */}
+                            {loadingMessages && messages.length === 0 && (
+                                <>
+                                    <PlaceholderLoadingItem className="loading-message" />
+                                    <PlaceholderLoadingItem className="loading-message" />
+                                </>
+                            )}
+
+                            {messages.map((message, index) => (
                                 <Message
                                     key={index}
-                                    name="Bolinha"
-                                    lastMessage="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nibh tortor, congue ut lectus viverra, placerat aliquet tellus. Mauris non ex mattis, gravida enim eget, laoreet velit."
-                                    pictureUrl={bolinha}
-                                    seen={index % 2 === 0}
+                                    name={message.whoSent.pet.name}
+                                    pictureUrl={message.whoSent.pet.photoUrl}
+                                    lastMessage={message.message}
+                                    seen={message.seen}
                                 />
                             ))}
                         </MessageList>
