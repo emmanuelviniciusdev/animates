@@ -6,6 +6,7 @@ export type WhoSentOrReceivedMessage = {
 }
 
 export type Message = {
+    id: number
     whoSent: WhoSentOrReceivedMessage
     whoReceived: WhoSentOrReceivedMessage
     message: string

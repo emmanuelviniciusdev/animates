@@ -27,6 +27,7 @@ const fakePet: Pet = {
 }
 
 const fakeMessages: Message[] = Array.from({ length: 20 }).map((_, index) => ({
+    id: index,
     whoSent: {
         userId: 1,
         pet: fakePet,

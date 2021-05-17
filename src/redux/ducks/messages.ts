@@ -27,6 +27,7 @@ export type StateType = {
     messages: Message[]
     totalMessages: number
     loadingMessages: boolean
+    allMessagesLoaded: boolean
 }
 
 const initialState: StateType = {
@@ -37,6 +38,11 @@ const initialState: StateType = {
     messages: [],
     totalMessages: 0,
     loadingMessages: false,
+
+    /**
+     * It can be true only if 'messages' array is not empty.
+     */
+    allMessagesLoaded: false,
 }
 
 export default function reducer(
@@ -51,11 +57,17 @@ export default function reducer(
             }
 
         case Types.SET_LIST_MESSAGES:
-            return {
+            const newState = {
                 ...state,
-                // TODO: Fix this logic. Messages may not be concatenated.
-                ...action.payload,
+                totalMessages: action.payload.totalMessages,
+                messages: [...state.messages, ...action.payload.messages],
             }
+
+            newState.allMessagesLoaded =
+                newState.messages.length > 0 &&
+                newState.messages.length === newState.totalMessages
+
+            return newState
 
         case Types.SET_LOADING_LATEST_MATCHES:
             return {
