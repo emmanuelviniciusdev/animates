@@ -11,9 +11,9 @@ const ldsDualRing = keyframes`
 `
 
 export const LoadingSpinnerStyle = styled.div<Props>`
-    display: inline-block;
+    /* display: inline-block;
     width: ${(props) => props.width ?? '80px'};
-    height: ${(props) => props.height ?? '80px'};
+    height: ${(props) => props.height ?? '80px'}; */
 
     &:after {
         content: ' ';
