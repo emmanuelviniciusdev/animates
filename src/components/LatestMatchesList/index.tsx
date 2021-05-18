@@ -34,7 +34,7 @@ function LatestMatchesList() {
 
             <List>
                 {latestMatches.loading &&
-                    Array.from({ length: 4 }).map((_, index) => (
+                    Array.from({ length: 3 }).map((_, index) => (
                         <PlaceholderLoadingItem
                             className="loading-pet-picture"
                             key={index}

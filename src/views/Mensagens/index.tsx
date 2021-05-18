@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import Menu from '../../components/Menu'
 import PageTitle from '../../components/PageTitle'
 import Message from '../../components/Message'
@@ -12,15 +12,19 @@ import {
     WrapperMessageList,
     MessageList,
     WrapperLatestMatchesList,
+    WrapperLoadingSpinner,
+    NoMessages,
 } from './styles'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../redux/store'
 import useThunkDispatch from '../../hooks/useThunkDispatch'
 import { getListMessages } from '../../redux/ducks/messages'
+import LoadingSpinner from '../../components/LoadingSpinner'
+import Icon from '@iconify/react'
+import chatsCircleDuotone from '@iconify/icons-ph/chats-circle-duotone'
 
 function Mensagens() {
     const dispatch = useThunkDispatch()
-    const wrapperMessageListRef = useRef<HTMLDivElement>(null)
     const [listMessagesPosition, setListMessagesPosition] = useState(1)
 
     const {
@@ -31,8 +35,6 @@ function Mensagens() {
     } = useSelector((state: RootState) => state.messages)
 
     const handleScroll = useCallback(() => {
-        if (!wrapperMessageListRef.current) return
-
         const {
             scrollHeight,
             scrollTop,
@@ -89,7 +91,7 @@ function Mensagens() {
                 </section>
 
                 <main>
-                    <WrapperMessageList ref={wrapperMessageListRef}>
+                    <WrapperMessageList>
                         <h2>Mensagens</h2>
 
                         <MessageList>
@@ -103,16 +105,35 @@ function Mensagens() {
                                 />
                             ))}
 
-                            {/* Loading animation */}
-                            {loadingMessages &&
-                                Array.from({
-                                    length: messages.length === 0 ? 2 : 1,
-                                }).map((_, index) => (
-                                    <PlaceholderLoadingItem
-                                        className="loading-message"
-                                        key={index}
+                            {/* First loading animation */}
+                            {loadingMessages && messages.length === 0 && (
+                                <>
+                                    <PlaceholderLoadingItem className="loading-message" />
+                                    <PlaceholderLoadingItem className="loading-message" />
+                                </>
+                            )}
+
+                            {/* Regular loading animation */}
+                            {loadingMessages && messages.length > 0 && (
+                                <WrapperLoadingSpinner>
+                                    <LoadingSpinner
+                                        width="30px"
+                                        height="30px"
+                                        borderSize="4px"
                                     />
-                                ))}
+                                </WrapperLoadingSpinner>
+                            )}
+
+                            {/* No messages */}
+                            {!loadingMessages && messages.length === 0 && (
+                                <NoMessages>
+                                    <Icon
+                                        icon={chatsCircleDuotone}
+                                        className="icon"
+                                    />
+                                    <p>Não há mensagens</p>
+                                </NoMessages>
+                            )}
                         </MessageList>
                     </WrapperMessageList>
                 </main>

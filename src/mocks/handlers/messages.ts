@@ -26,7 +26,7 @@ const fakePet: Pet = {
     dateOfBirth: new Date(),
 }
 
-const fakeMessages: Message[] = Array.from({ length: 20 }).map((_, index) => ({
+const fakeMessages: Message[] = Array.from({ length: 15 }).map((_, index) => ({
     id: index,
     whoSent: {
         userId: 1,
