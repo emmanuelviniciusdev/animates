@@ -1,5 +1,5 @@
 import { lighten } from 'polished'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { ActionUploadType } from './types'
 
 export const NoPicturesFound = styled.div`
@@ -15,7 +15,7 @@ export const WrapperActionUpload = styled.div`
     display: flex;
     flex-direction: column;
     gap: 20px;
-    margin-top: 20px;
+    margin-top: 30px;
 
     @media (min-width: 600px) {
         flex-direction: row;
@@ -30,6 +30,7 @@ export const ActionUpload = styled.div<{ type: ActionUploadType }>`
     background-color: ${(props) => lighten(0.05, props.theme.bgTertiary)};
     border-radius: 30px;
     padding: 20px;
+    cursor: pointer;
 
     p {
         font-size: 18px;

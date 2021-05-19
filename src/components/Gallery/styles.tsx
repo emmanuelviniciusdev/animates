@@ -11,7 +11,7 @@ export const GalleryContent = styled.div`
     /* background: gray; */
 `
 
-export const ButtonOpenPictureUpload = styled.button`
+export const ButtonOpenUploadSection = styled.button`
     background-color: ${(props) => props.theme.bgTertiary};
     min-width: 150px;
     height: 100%;
