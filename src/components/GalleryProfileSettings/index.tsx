@@ -1,10 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import {
-    NoPicturesFound,
-    ActionUpload,
-    WrapperActionUpload,
-    WrapperGallery,
-} from './styles'
+import { ActionUpload, WrapperActionUpload, WrapperGallery } from './styles'
 import { Icon } from '@iconify/react'
 import cameraDuotone from '@iconify/icons-ph/camera-duotone'
 import imageDuotone from '@iconify/icons-ph/image-duotone'
@@ -90,8 +85,6 @@ function GalleryProfileSettings() {
 
     return (
         <>
-            <NoPicturesFound>Nenhuma foto encontrada</NoPicturesFound>
-
             <WrapperGallery>
                 <Gallery
                     mode="account-settings"

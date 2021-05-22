@@ -83,3 +83,12 @@ export const ButtonIcon = styled.button`
         color: #ff4343;
     }
 `
+
+export const NoPicturesFound = styled.div`
+    background-color: ${(props) => props.theme.bgTertiary};
+    color: ${(props) => props.theme.colorTertiary};
+    font-size: 18px;
+    padding: 20px;
+    width: max-content;
+    border-radius: 30px;
+`

@@ -7,12 +7,13 @@ import {
     Caption,
     ButtonIcon,
     ButtonOpenUploadSection,
+    NoPicturesFound,
 } from './styles'
 import { Icon } from '@iconify/react'
 import trashDuotone from '@iconify/icons-ph/trash-duotone'
 import userCircleDuotone from '@iconify/icons-ph/user-circle-duotone'
-import arrowDownBold from '@iconify/icons-ph/arrow-down-bold'
-import arrowUpBold from '@iconify/icons-ph/arrow-up-bold'
+import xBold from '@iconify/icons-ph/x-bold'
+import cloudArrowUpDuotone from '@iconify/icons-ph/cloud-arrow-up-duotone'
 import ReactTooltip from 'react-tooltip'
 import { PlaceholderLoadingItem } from '../../styles/commonStyles'
 
@@ -22,12 +23,14 @@ function Gallery({
     loading = false,
     onOpenUploadSection,
 }: Partial<Props>) {
-    const [uploadSectionIsOpened, setUploadSectionIsOpened] = useState(true)
+    // photos = []
+
+    const [uploadSectionIsOpened, setUploadSectionIsOpened] = useState(false)
 
     const isAccountSettingsMode = mode === 'account-settings'
     const buttonUploadSectionText = uploadSectionIsOpened
         ? 'Fechar seção de upload'
-        : 'Abrir seção de upload'
+        : 'Fazer upload de novas fotos'
 
     useEffect(() => {
         if (onOpenUploadSection) onOpenUploadSection(uploadSectionIsOpened)
@@ -42,6 +45,8 @@ function Gallery({
                     <div>
                         <ButtonOpenUploadSection
                             aria-label={buttonUploadSectionText}
+                            data-for="tooltip-gallery"
+                            data-tip={buttonUploadSectionText}
                             onClick={() => {
                                 setUploadSectionIsOpened((state) => !state)
                                 ReactTooltip.hide()
@@ -50,8 +55,8 @@ function Gallery({
                             <Icon
                                 icon={
                                     uploadSectionIsOpened
-                                        ? arrowUpBold
-                                        : arrowDownBold
+                                        ? xBold
+                                        : cloudArrowUpDuotone
                                 }
                                 className="icon"
                             />
@@ -60,6 +65,12 @@ function Gallery({
                 )}
 
                 <div>
+                    {!loading && (!photos || photos.length === 0) && (
+                        <NoPicturesFound>
+                            Nenhuma foto encontrada
+                        </NoPicturesFound>
+                    )}
+
                     {loading && (
                         <>
                             <WrapperImage>
