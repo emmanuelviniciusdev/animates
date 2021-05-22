@@ -8,16 +8,18 @@ import {
     ButtonIcon,
     ButtonOpenUploadSection,
 } from './styles'
-import tobby from '../../assets/images/tobby.jpg'
 import { Icon } from '@iconify/react'
 import trashDuotone from '@iconify/icons-ph/trash-duotone'
 import userCircleDuotone from '@iconify/icons-ph/user-circle-duotone'
 import arrowDownBold from '@iconify/icons-ph/arrow-down-bold'
 import arrowUpBold from '@iconify/icons-ph/arrow-up-bold'
 import ReactTooltip from 'react-tooltip'
+import { PlaceholderLoadingItem } from '../../styles/commonStyles'
 
 function Gallery({
     mode = 'card-adocao',
+    photos,
+    loading = false,
     onOpenUploadSection,
 }: Partial<Props>) {
     const [uploadSectionIsOpened, setUploadSectionIsOpened] = useState(true)
@@ -58,36 +60,49 @@ function Gallery({
                 )}
 
                 <div>
-                    {Array.from({ length: 5 }).map((_, index) => (
-                        <WrapperImage key={index}>
-                            <Image src={tobby} alt="Foto do(a) Tobby" />
+                    {loading && (
+                        <>
+                            <WrapperImage>
+                                <PlaceholderLoadingItem className="loading-photo" />
+                            </WrapperImage>
+                            <WrapperImage>
+                                <PlaceholderLoadingItem className="loading-photo" />
+                            </WrapperImage>
+                        </>
+                    )}
 
-                            {isAccountSettingsMode && (
-                                <Caption>
-                                    <ButtonIcon
-                                        data-for="tooltip-gallery"
-                                        aria-label="Definir como foto de perfil"
-                                        data-tip="Definir como foto de perfil"
-                                    >
-                                        <Icon
-                                            icon={userCircleDuotone}
-                                            className="icon"
-                                        />
-                                    </ButtonIcon>
-                                    <ButtonIcon
-                                        data-for="tooltip-gallery"
-                                        aria-label="Deletar foto"
-                                        data-tip="Deletar foto"
-                                    >
-                                        <Icon
-                                            icon={trashDuotone}
-                                            className="icon icon-trash"
-                                        />
-                                    </ButtonIcon>
-                                </Caption>
-                            )}
-                        </WrapperImage>
-                    ))}
+                    {!loading &&
+                        photos &&
+                        photos.map((photo, index) => (
+                            <WrapperImage key={index}>
+                                <Image src={photo.url} alt={photo.petName} />
+
+                                {isAccountSettingsMode && (
+                                    <Caption>
+                                        <ButtonIcon
+                                            data-for="tooltip-gallery"
+                                            aria-label="Definir como foto de perfil"
+                                            data-tip="Definir como foto de perfil"
+                                        >
+                                            <Icon
+                                                icon={userCircleDuotone}
+                                                className="icon"
+                                            />
+                                        </ButtonIcon>
+                                        <ButtonIcon
+                                            data-for="tooltip-gallery"
+                                            aria-label="Deletar foto"
+                                            data-tip="Deletar foto"
+                                        >
+                                            <Icon
+                                                icon={trashDuotone}
+                                                className="icon icon-trash"
+                                            />
+                                        </ButtonIcon>
+                                    </Caption>
+                                )}
+                            </WrapperImage>
+                        ))}
                 </div>
             </GalleryContent>
         </>

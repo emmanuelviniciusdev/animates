@@ -1,5 +1,5 @@
 import { lighten } from 'polished'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { ActionUploadType } from './types'
 
 export const NoPicturesFound = styled.div`
@@ -22,7 +22,10 @@ export const WrapperActionUpload = styled.div`
     }
 `
 
-export const ActionUpload = styled.div<{ type: ActionUploadType }>`
+export const ActionUpload = styled.div<{
+    type: ActionUploadType
+    disabled?: boolean
+}>`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -30,7 +33,7 @@ export const ActionUpload = styled.div<{ type: ActionUploadType }>`
     background-color: ${(props) => lighten(0.05, props.theme.bgTertiary)};
     border-radius: 30px;
     padding: 20px;
-    cursor: pointer;
+    cursor: ${(props) => (props.disabled ? 'wait' : 'pointer')};
 
     p {
         font-size: 18px;

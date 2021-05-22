@@ -11,7 +11,7 @@ const apiUrl = process.env.REACT_APP_BASE_API_URL
 /**
  * Endpoint: "/list_messages".
  *
- * Envia um objeto "MessagesListPagination".
+ * Recebe um objeto "MessagesListPagination".
  *
  * Em caso de:
  * - Sucesso: retorna um "ResponseSuccess"
@@ -76,7 +76,7 @@ export const listMessages = rest.get<MessagesListPagination>(
 /**
  * Endpoint: "/latest_matches".
  *
- * Não envia nada.
+ * Não recebe nada.
  *
  * Em caso de:
  * - Sucesso: retorna um "ResponseSuccess"

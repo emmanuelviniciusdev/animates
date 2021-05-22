@@ -1,3 +1,4 @@
+import { lighten } from 'polished'
 import styled from 'styled-components'
 
 export const GalleryContent = styled.div`
@@ -9,6 +10,13 @@ export const GalleryContent = styled.div`
     display: flex;
     gap: 25px;
     /* background: gray; */
+
+    .loading-photo {
+        width: 250px;
+        height: 200px;
+        border-radius: 5px;
+        background-color: ${(props) => lighten(0.09, props.theme.bgDefault)};
+    }
 `
 
 export const ButtonOpenUploadSection = styled.button`

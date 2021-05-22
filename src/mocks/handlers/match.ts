@@ -8,7 +8,7 @@ const apiUrl = process.env.REACT_APP_BASE_API_URL
 /**
  * Endpoint: "/match".
  *
- * Envia um objeto "MatchData".
+ * Recebe um objeto "MatchData".
  *
  * Em caso de:
  * - Sucesso: retorna um "ResponseSuccess"
@@ -36,7 +36,7 @@ export const match = rest.post<Partial<MatchData>>(
 /**
  * Endpoint: "/get_next_pet".
  *
- * Não envia nada. Próximo pet é detectado usando o ID do usuário que está dentro
+ * Não recebe nada. Próximo pet é detectado usando o ID do usuário que está dentro
  * do token de acesso.
  *
  * Em caso de:
