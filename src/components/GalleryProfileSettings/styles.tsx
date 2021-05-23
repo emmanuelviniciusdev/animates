@@ -7,6 +7,7 @@ export const WrapperActionUpload = styled.div`
     flex-direction: column;
     gap: 20px;
     margin-top: 30px;
+    height: 200px;
 
     @media (min-width: 600px) {
         flex-direction: row;

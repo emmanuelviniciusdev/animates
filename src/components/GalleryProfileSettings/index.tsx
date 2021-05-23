@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { ActionUpload, WrapperActionUpload, WrapperGallery } from './styles'
 import { Icon } from '@iconify/react'
-import cameraDuotone from '@iconify/icons-ph/camera-duotone'
 import imageDuotone from '@iconify/icons-ph/image-duotone'
 import fileArrowUpFill from '@iconify/icons-ph/file-arrow-up-fill'
 import Gallery from '../Gallery'
@@ -15,8 +14,7 @@ function ActionUploadDragContentNotDragging() {
         <>
             <Icon icon={imageDuotone} className="icon" />
             <p>
-                fazer upload de novas fotos <b>clicando aqui</b> ou{' '}
-                <b>arrastando e soltando</b> os arquivos para cá
+                <b>clique aqui</b> ou arraste e <b>solte suas imagens</b>
             </p>
         </>
     )
@@ -96,18 +94,6 @@ function GalleryProfileSettings() {
 
             {openActionUpload && (
                 <WrapperActionUpload>
-                    <ActionUpload type="device-camera">
-                        <Icon icon={cameraDuotone} className="icon" />
-                        <p>
-                            clique aqui para adicionar novas fotos utilizando a{' '}
-                            <b>câmera do dispositivo</b>
-                        </p>
-                        {/* testing */}
-                        {/* testing */}
-                        {/* testing */}
-                        <input type="file" capture="environment" />
-                    </ActionUpload>
-
                     {loadingUploadPhotos && (
                         <ActionUpload type="files" disabled>
                             <LoadingSpinner backgroundColor="#CCC" />
