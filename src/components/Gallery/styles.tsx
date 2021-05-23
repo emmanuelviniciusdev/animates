@@ -1,3 +1,4 @@
+import { lighten } from 'polished'
 import styled from 'styled-components'
 
 export const GalleryContent = styled.div`
@@ -9,9 +10,16 @@ export const GalleryContent = styled.div`
     display: flex;
     gap: 25px;
     /* background: gray; */
+
+    .loading-photo {
+        width: 250px;
+        height: 200px;
+        border-radius: 5px;
+        background-color: ${(props) => lighten(0.09, props.theme.bgDefault)};
+    }
 `
 
-export const ButtonOpenPictureUpload = styled.button`
+export const ButtonOpenUploadSection = styled.button`
     background-color: ${(props) => props.theme.bgTertiary};
     min-width: 150px;
     height: 100%;
@@ -74,4 +82,13 @@ export const ButtonIcon = styled.button`
     .icon-trash {
         color: #ff4343;
     }
+`
+
+export const NoPicturesFound = styled.div`
+    background-color: ${(props) => props.theme.bgTertiary};
+    color: ${(props) => props.theme.colorTertiary};
+    font-size: 18px;
+    padding: 20px;
+    width: max-content;
+    border-radius: 30px;
 `

@@ -65,10 +65,10 @@ export const WrapperButtonSave = styled.div`
         }
     }
 
-    @media (min-height: 760px) and (min-width: 1280px) {
+    /* @media (min-height: 760px) and (min-width: 1280px) {
         position: fixed;
         margin-bottom: 0;
         bottom: 30px;
         right: 100px;
-    }
+    } */
 `

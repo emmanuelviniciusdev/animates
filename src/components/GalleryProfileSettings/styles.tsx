@@ -2,27 +2,22 @@ import { lighten } from 'polished'
 import styled from 'styled-components'
 import { ActionUploadType } from './types'
 
-export const NoPicturesFound = styled.div`
-    background-color: ${(props) => props.theme.bgTertiary};
-    color: ${(props) => props.theme.colorTertiary};
-    font-size: 18px;
-    padding: 20px;
-    width: max-content;
-    border-radius: 30px;
-`
-
 export const WrapperActionUpload = styled.div`
     display: flex;
     flex-direction: column;
     gap: 20px;
-    margin-top: 20px;
+    margin-top: 30px;
+    height: 200px;
 
     @media (min-width: 600px) {
         flex-direction: row;
     }
 `
 
-export const ActionUpload = styled.div<{ type: ActionUploadType }>`
+export const ActionUpload = styled.div<{
+    type: ActionUploadType
+    disabled?: boolean
+}>`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -30,6 +25,7 @@ export const ActionUpload = styled.div<{ type: ActionUploadType }>`
     background-color: ${(props) => lighten(0.05, props.theme.bgTertiary)};
     border-radius: 30px;
     padding: 20px;
+    cursor: ${(props) => (props.disabled ? 'wait' : 'pointer')};
 
     p {
         font-size: 18px;

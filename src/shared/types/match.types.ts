@@ -1,11 +1,4 @@
 export type MatchData = {
-    petId: string
+    petId: number
     action: 'love' | 'skip'
-}
-
-export type Pet = {
-    id: string
-    name: string
-    photoUrl: string
-    dateOfBirth: Date
 }

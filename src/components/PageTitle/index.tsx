@@ -25,7 +25,7 @@ function PageTitle({
                 <HeadingTag>
                     <span className="main-heading-content">{children}</span>
 
-                    {notifications && (
+                    {notifications !== undefined && (
                         <Notifications>
                             <ContentNotification>
                                 <span>{notifications}</span>

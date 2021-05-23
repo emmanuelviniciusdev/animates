@@ -12,10 +12,6 @@ import plusBold from '@iconify/icons-ph/plus-bold'
 function ConfiguracoesConta() {
     useEffect(() => setPageTitle('Configurações de Perfil'), [])
 
-    // const { petInfo } = useSelector<RootState, ProfileSettingsStateType>(
-    //     (state) => state.profileSettings
-    // )
-
     const userHasNoPets = false
 
     return (
