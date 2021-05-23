@@ -102,6 +102,10 @@ function GalleryProfileSettings() {
                             clique aqui para adicionar novas fotos utilizando a{' '}
                             <b>câmera do dispositivo</b>
                         </p>
+                        {/* testing */}
+                        {/* testing */}
+                        {/* testing */}
+                        <input type="file" capture="environment" />
                     </ActionUpload>
 
                     {loadingUploadPhotos && (

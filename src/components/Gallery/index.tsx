@@ -23,8 +23,6 @@ function Gallery({
     loading = false,
     onOpenUploadSection,
 }: Partial<Props>) {
-    // photos = []
-
     const [uploadSectionIsOpened, setUploadSectionIsOpened] = useState(false)
 
     const isAccountSettingsMode = mode === 'account-settings'
@@ -32,9 +30,19 @@ function Gallery({
         ? 'Fechar seção de upload'
         : 'Fazer upload de novas fotos'
 
+    /**
+     * Handles upload section's opening.
+     */
     useEffect(() => {
         if (onOpenUploadSection) onOpenUploadSection(uploadSectionIsOpened)
     }, [onOpenUploadSection, uploadSectionIsOpened])
+
+    /**
+     * Rebuilds "ReactTooltip" whenever "photos" or "loading" props change.
+     */
+    useEffect(() => {
+        ReactTooltip.rebuild()
+    }, [photos, loading])
 
     return (
         <>
@@ -49,7 +57,7 @@ function Gallery({
                             data-tip={buttonUploadSectionText}
                             onClick={() => {
                                 setUploadSectionIsOpened((state) => !state)
-                                ReactTooltip.hide()
+                                ReactTooltip.rebuild()
                             }}
                         >
                             <Icon
