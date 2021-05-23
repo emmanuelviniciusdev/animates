@@ -14,7 +14,7 @@ function ActionUploadDragContentNotDragging() {
         <>
             <Icon icon={imageDuotone} className="icon" />
             <p>
-                <b>clique aqui</b> ou arraste e <b>solte suas imagens</b>
+                <b>clique aqui</b> ou <b>arraste e solte suas imagens</b>
             </p>
         </>
     )
