@@ -39,6 +39,9 @@ function FormRegister() {
             dispatch(register(values))
                 .then(() => {
                     toast.dismiss('toast-error-register')
+
+                    toast.success('Bem-vindo ao Animates!')
+
                     history.push(RoutePaths.INICIO)
                 })
                 .catch((err) => {

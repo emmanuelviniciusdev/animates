@@ -14,18 +14,24 @@ import { AxiosResponse } from 'axios'
 export const Types = {
     LOGIN: 'auth/login',
     LOGOUT: 'auth/logout',
+    SET_USERID: 'auth/set_userid',
 }
 
 /**
  * Reducer
  */
 
-export type StateType = {}
+export type StateType = {
+    userid?: number
+}
 
 const initialState: StateType = {}
 
 export default function reducer(state = initialState, action: Action) {
     switch (action.type) {
+        case Types.SET_USERID:
+            return { ...state, userid: action.payload }
+
         default:
             return state
     }
@@ -40,9 +46,9 @@ export function login(data: LoginData) {
         const { email, password } = data
 
         return appAxios()
-            .post<any, AxiosResponse<AuthResponse>>('login', {
+            .post<any, AxiosResponse<AuthResponse>>('autenticacao', {
                 email,
-                password,
+                senha: password,
             })
             .then(setAuthToken)
     }
@@ -53,14 +59,18 @@ export function register(data: RegisterData) {
         const { email, password, firstName, lastName } = data
 
         return appAxios()
-            .post<any, AxiosResponse<AuthResponse>>('register', {
+            .post<any, AxiosResponse<AuthResponse>>('usuario', {
                 email,
-                password,
-                firstName,
-                lastName,
+                senha: password,
+                nome: firstName,
+                sobrenome: lastName,
             })
             .then(setAuthToken)
     }
+}
+
+export function setUserID(userid: number): Action {
+    return { type: Types.SET_USERID, payload: userid }
 }
 
 /**

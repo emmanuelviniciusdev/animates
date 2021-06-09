@@ -1,18 +1,33 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Menu from '../../components/Menu'
 import PageTitle from '../../components/PageTitle'
 import RoundedButton from '../../components/RoundedButton'
 import GalleryProfileSettings from '../../components/GalleryProfileSettings'
 import FormPetInfo from '../../components/FormPetInfo'
-import { setPageTitle } from '../../shared/helpers'
+import { appAxios, setPageTitle } from '../../shared/helpers'
 import { GeneralContent } from '../../styles/commonStyles'
 import { Content, SubContent } from './styles'
 import plusBold from '@iconify/icons-ph/plus-bold'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../redux/store'
 
 function ConfiguracoesConta() {
+    const [userHasNoPets, setUserHasNoPets] = useState<boolean>()
+
+    const auth = useSelector((state: RootState) => state.auth)
+
     useEffect(() => setPageTitle('Configurações de Perfil'), [])
 
-    const userHasNoPets = false
+    /**
+     * Verifies wheter or not user has a pet.
+     */
+    useEffect(() => {
+        if (!auth.userid) return
+
+        appAxios()
+            .get(`usuario/${auth.userid}/animal`)
+            .then((res) => setUserHasNoPets(res.data.length === 0))
+    }, [auth.userid])
 
     return (
         <>

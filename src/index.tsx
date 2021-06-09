@@ -11,15 +11,17 @@ import { darkTheme } from './styles/themes'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
+// TODO: ARRUMAR A BAGUNÇA
+
 /**
  * Enable API mocking requests
  */
-const enableMocksForBetaRelease = true
+// const enableMocksForBetaRelease = true
 
-if (process.env.NODE_ENV === 'development' || enableMocksForBetaRelease) {
-    const { worker } = require('./mocks/browser')
-    worker.start()
-}
+// if (process.env.NODE_ENV === 'development' || enableMocksForBetaRelease) {
+//     const { worker } = require('./mocks/browser')
+//     worker.start()
+// }
 
 ReactDOM.render(
     <React.StrictMode>
@@ -50,7 +52,7 @@ ReactDOM.render(
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://cra.link/PWA
-serviceWorkerRegistration.register()
+serviceWorkerRegistration.unregister()
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

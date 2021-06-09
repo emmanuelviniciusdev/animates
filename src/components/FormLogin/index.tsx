@@ -32,6 +32,9 @@ function FormLogin() {
             dispatch(login(values))
                 .then(() => {
                     toast.dismiss('toast-error-login')
+
+                    toast.success('Logado com sucesso!')
+
                     history.push(RoutePaths.INICIO)
                 })
                 .catch((err) => {

@@ -69,16 +69,16 @@ function GalleryProfileSettings() {
     useEffect(() => {
         setLoadingPhotos(true)
 
-        appAxios()
-            .get('photos')
-            .then((res) => setPhotos(res.data.data.photos))
-            .catch((err) =>
-                handleRegularErrorMessage(
-                    err,
-                    'toast-error-gallery-profile-settings'
-                )
-            )
-            .finally(() => setLoadingPhotos(false))
+        // appAxios()
+        //     .get('photos')
+        //     .then((res) => setPhotos(res.data.data.photos))
+        //     .catch((err) =>
+        //         handleRegularErrorMessage(
+        //             err,
+        //             'toast-error-gallery-profile-settings'
+        //         )
+        //     )
+        //     .finally(() => setLoadingPhotos(false))
     }, [])
 
     return (

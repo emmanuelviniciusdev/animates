@@ -1,11 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import AppInput from '../AppInput'
-import {
-    Form,
-    Textarea,
-    WrapperInputCheckbox,
-    WrapperButtonSave,
-} from './styles'
+import { Form, WrapperInputCheckbox, WrapperButtonSave } from './styles'
 import InputMask from 'inputmask'
 import FormInputMessage from '../FormInputMessage'
 import RoundedButton from '../../components/RoundedButton'
@@ -14,6 +9,9 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { transformYupDate } from '../../shared/helpers'
 import { toast } from 'react-toastify'
+import AppSelectInput from '../AppSelectInput'
+import AppTextarea from '../AppTextarea'
+import { appAxios } from '../../shared/helpers'
 
 function FormPetInfo() {
     const dateOfBirthInputRef = useRef<HTMLInputElement>(null)
@@ -25,6 +23,7 @@ function FormPetInfo() {
             description: '',
             petIsOpenToRelationships: false,
             petIsForAdoption: false,
+            species: '',
         },
         validationSchema: Yup.object({
             name: Yup.string().required(),
@@ -32,6 +31,7 @@ function FormPetInfo() {
             description: Yup.string().required(),
             petIsOpenToRelationships: Yup.boolean(),
             petIsForAdoption: Yup.boolean(),
+            species: Yup.string().required(),
         }),
         onSubmit(values, formikHelpers) {
             console.log(values)
@@ -40,10 +40,28 @@ function FormPetInfo() {
         },
     })
 
+    /**
+     * Masks the "date of birth" input.
+     */
     useEffect(() => {
         if (dateOfBirthInputRef.current)
             InputMask('99/99/9999').mask(dateOfBirthInputRef.current)
     }, [])
+
+    /**
+     * Gets the available list of species.
+     */
+    useEffect(() => {
+        appAxios()
+            .get(`dominios`)
+            .then(console.log)
+            .catch((err) => console.log(err))
+    }, [])
+
+    const mySpecies = Array.from({ length: 5 }).map((_, index) => ({
+        id: index,
+        name: `Espécie ${index}`,
+    }))
 
     return (
         <>
@@ -79,8 +97,7 @@ function FormPetInfo() {
                     />
                 )}
 
-                {/* TODO: Replace to "AppTextarea" component. */}
-                <Textarea
+                <AppTextarea
                     placeholder="sobre o pet..."
                     aria-label="sobre o pet..."
                     {...formik.getFieldProps('description')}
@@ -88,6 +105,29 @@ function FormPetInfo() {
                 {formik.touched.description && formik.errors.description && (
                     <FormInputMessage
                         message={formik.errors.description}
+                        style={{
+                            marginTop: '-30px',
+                            marginBottom: '25px',
+                        }}
+                    />
+                )}
+
+                <AppSelectInput
+                    aria-label="espécie"
+                    style={{ marginBottom: '50px' }}
+                    {...formik.getFieldProps('species')}
+                >
+                    <option value="">Selecione a espécie...</option>
+
+                    {mySpecies.map((specie) => (
+                        <option key={specie.id} value={specie.id}>
+                            {specie.name}
+                        </option>
+                    ))}
+                </AppSelectInput>
+                {formik.touched.species && formik.errors.species && (
+                    <FormInputMessage
+                        message={formik.errors.species}
                         style={{
                             marginTop: '-30px',
                             marginBottom: '25px',

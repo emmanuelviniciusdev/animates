@@ -1,7 +1,10 @@
-import React, { lazy, Suspense } from 'react'
+import React, { lazy, Suspense, useEffect } from 'react'
 import { HashRouter as Router, Switch } from 'react-router-dom'
 import Loading from '../views/Loading'
 import AppRoute from '../components/AppRoute'
+import jwt_decode from 'jwt-decode'
+import useThunkDispatch from '../hooks/useThunkDispatch'
+import { setUserID } from '../redux/ducks/auth'
 
 const Home = lazy(() => import('../views/Home'))
 const Login = lazy(() => import('../views/Login'))
@@ -17,6 +20,21 @@ const ConfiguracoesPerfil = lazy(() => import('../views/ConfiguracoesPerfil'))
 const Pagina404 = lazy(() => import('../views/Pagina404'))
 
 function Routes() {
+    const dispatch = useThunkDispatch()
+
+    const userToken = localStorage.getItem('token') ?? ''
+
+    /**
+     * Defines user's ID in Redux.
+     */
+    useEffect(() => {
+        if (!userToken) return
+
+        const userid = (jwt_decode(userToken) as any).id
+
+        dispatch(setUserID(userid))
+    }, [userToken, dispatch])
+
     return (
         <>
             <Router>

@@ -25,14 +25,13 @@ export function limitTextSize(text: string, limitSize: number) {
 export function appAxios() {
     const modifiedAxios = axios.create({
         baseURL: process.env.REACT_APP_BASE_API_URL,
+        withCredentials: true,
     })
 
     const accessToken = localStorage.getItem('token')
 
     if (accessToken) {
-        modifiedAxios.defaults.headers.common[
-            'Authorization'
-        ] = `Bearer ${accessToken}`
+        modifiedAxios.defaults.headers.common['x-api-key'] = `${accessToken}`
     }
 
     return modifiedAxios
