@@ -50,14 +50,16 @@ const fakePets: Pet[] = [
         photoUrl:
             'https://direct.rhapsody.com/imageserver/images/alb.468470225/500x500.jpg',
         dateOfBirth: new Date('2021-01-01'),
-        description: '',
+        description:
+            'O Tobby é um adorável filhote de cachorro. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nibh dui, molestie auctor mi a, venenatis molestie quam. Quisque eu est nibh. Aliquam tempus dui mi, ac efficitur risus gravida non.',
     },
     {
         id: 2,
         name: 'Bolinha',
         photoUrl: 'https://i.redd.it/s0rrluzbe1v01.jpg',
         dateOfBirth: new Date('2019-06-20'),
-        description: '',
+        description:
+            'O Bolinha é um adorável cachorro. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nibh dui, molestie auctor mi a, venenatis molestie quam. Quisque eu est nibh. Aliquam tempus dui mi, ac efficitur risus gravida non.',
     },
     {
         id: 3,
@@ -65,7 +67,7 @@ const fakePets: Pet[] = [
         photoUrl:
             'https://static.boredpanda.com/blog/wp-content/uploads/2021/01/happy-doggo-60101d7be4631__700.jpg',
         dateOfBirth: new Date('2011-03-10'),
-        description: '',
+        description: 'Tobias é um cachorro muito amigável.',
     },
 ]
 

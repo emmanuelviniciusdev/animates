@@ -68,6 +68,28 @@ export const InformationSeparator = styled.div`
     background-color: ${(props) => props.theme.bgSecondary};
 `
 
+export const PetDescription = styled.div`
+    width: 350px;
+
+    p {
+        text-align: center;
+        font-size: 18px;
+
+        &.know-better-text {
+            padding: 10px;
+            background-color: ${(props) =>
+                lighten(0.09, props.theme.bgDefault)};
+            border: solid 4px ${(props) => props.theme.bgSecondary};
+
+            border-radius: 30px;
+        }
+    }
+
+    @media (min-width: 960px) {
+        width: 380px;
+    }
+`
+
 export const Actions = styled.div`
     display: flex;
     gap: 25px;

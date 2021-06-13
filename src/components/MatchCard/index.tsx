@@ -7,6 +7,7 @@ import {
     InformationSeparator,
     Picture,
     ReportButton,
+    PetDescription,
 } from './styles'
 import { Icon } from '@iconify/react'
 import heartFill from '@iconify/icons-ph/heart-fill'
@@ -19,7 +20,7 @@ import { toast } from 'react-toastify'
 import { Props } from './types'
 import useThunkDispatch from '../../hooks/useThunkDispatch'
 import { match, setCurrentPet } from '../../redux/ducks/match'
-import { handleRegularErrorMessage } from '../../shared/helpers'
+import { handleRegularErrorMessage, limitTextSize } from '../../shared/helpers'
 import moment from 'moment'
 import ReportModal from '../ReportModal'
 
@@ -122,6 +123,13 @@ function MatchCard({ pet }: Props) {
 
                                 <span>{getPetAgeText()}</span>
                             </Information>
+
+                            <PetDescription>
+                                <p>{limitTextSize(pet.description, 70)}</p>
+                                <p className="know-better-text">
+                                    <b>Ame</b> para conhecer melhor...
+                                </p>
+                            </PetDescription>
 
                             <Actions>
                                 <CardButton
