@@ -2,7 +2,7 @@ import { rest } from 'msw'
 import { LoginData } from '../../shared/types/auth.types'
 import { ResponseError } from '../../shared/types/api.types'
 
-const apiUrl = process.env.REACT_APP_BASE_API_URL
+const apiUrl = process.env.REACT_APP_BASE_API_URL_FOR_MOCKING
 
 /**
  * Login credentials:

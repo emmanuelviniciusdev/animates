@@ -3,7 +3,7 @@ import { ResponseSuccess, ResponseError } from '../../shared/types/api.types'
 import { MatchData } from '../../shared/types/match.types'
 import { Pet } from '../../shared/types/pet.types'
 
-const apiUrl = process.env.REACT_APP_BASE_API_URL
+const apiUrl = process.env.REACT_APP_BASE_API_URL_FOR_MOCKING
 
 /**
  * Endpoint: "/match".

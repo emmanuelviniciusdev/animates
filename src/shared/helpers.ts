@@ -22,10 +22,16 @@ export function limitTextSize(text: string, limitSize: number) {
  * Returns a modified instance of axios with the API base URL and authorization access
  * token applied to it.
  */
-export function appAxios() {
+export function appAxios(mockRequests = true) {
+    const baseURL = mockRequests
+        ? process.env.REACT_APP_BASE_API_URL_FOR_MOCKING
+        : process.env.REACT_APP_BASE_API_URL
+
     const modifiedAxios = axios.create({
-        baseURL: process.env.REACT_APP_BASE_API_URL,
-        withCredentials: true,
+        baseURL,
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+        },
     })
 
     const accessToken = localStorage.getItem('token')

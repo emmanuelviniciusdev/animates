@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import AppInput from '../AppInput'
 import { Form, WrapperInputCheckbox, WrapperButtonSave } from './styles'
 import InputMask from 'inputmask'
@@ -12,9 +12,15 @@ import { toast } from 'react-toastify'
 import AppSelectInput from '../AppSelectInput'
 import AppTextarea from '../AppTextarea'
 import { appAxios } from '../../shared/helpers'
+import { DomainItem } from '../../shared/types/api.types'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../redux/store'
 
 function FormPetInfo() {
     const dateOfBirthInputRef = useRef<HTMLInputElement>(null)
+    const [species, setSpecies] = useState<DomainItem[]>([])
+
+    const auth = useSelector((state: RootState) => state.auth)
 
     const formik = useFormik({
         initialValues: {
@@ -41,6 +47,35 @@ function FormPetInfo() {
     })
 
     /**
+     * Gets the user's pet.
+     */
+    useEffect(() => {
+        if (!auth.userid) return
+
+        appAxios(false)
+            .get(`usuario/${auth.userid}/animal`)
+            .then((res) => {
+                if (res.data.length === 0) return
+
+                const userPet = res.data[0].animal
+
+                console.log(userPet)
+
+                formik.setValues({
+                    name: userPet.nome ?? '',
+                    dateOfBirth: userPet.dataNascimento ?? '',
+                    description: userPet.descricao ?? '',
+                    petIsForAdoption: userPet.fl_para_adocao ?? false,
+                    petIsOpenToRelationships:
+                        userPet.fl_buscando_parceiro ?? false,
+                    species: userPet.dominio_tp_animal.id ?? '',
+                })
+            })
+
+        // eslint-disable-next-line
+    }, [auth.userid])
+
+    /**
      * Masks the "date of birth" input.
      */
     useEffect(() => {
@@ -52,16 +87,11 @@ function FormPetInfo() {
      * Gets the available list of species.
      */
     useEffect(() => {
-        appAxios()
-            .get(`dominios`)
-            .then(console.log)
+        appAxios(false)
+            .get(`dominios?tp_dominio=tipo_animal`)
+            .then((res) => setSpecies(res.data.items))
             .catch((err) => console.log(err))
     }, [])
-
-    const mySpecies = Array.from({ length: 5 }).map((_, index) => ({
-        id: index,
-        name: `Espécie ${index}`,
-    }))
 
     return (
         <>
@@ -119,9 +149,9 @@ function FormPetInfo() {
                 >
                     <option value="">Selecione a espécie...</option>
 
-                    {mySpecies.map((specie) => (
+                    {species.map((specie) => (
                         <option key={specie.id} value={specie.id}>
-                            {specie.name}
+                            {specie.nm_dominio}
                         </option>
                     ))}
                 </AppSelectInput>
@@ -139,6 +169,7 @@ function FormPetInfo() {
                     <input
                         type="checkbox"
                         id="petIsOpenToRelationships"
+                        checked={formik.values.petIsOpenToRelationships}
                         {...formik.getFieldProps('petIsOpenToRelationships')}
                     />
                     <label htmlFor="petIsOpenToRelationships">
@@ -149,6 +180,7 @@ function FormPetInfo() {
                     <input
                         type="checkbox"
                         id="petIsForAdoption"
+                        checked={formik.values.petIsForAdoption}
                         {...formik.getFieldProps('petIsForAdoption')}
                     />
                     <label htmlFor="petIsForAdoption">
@@ -158,6 +190,7 @@ function FormPetInfo() {
 
                 <WrapperButtonSave>
                     <RoundedButton
+                        type="submit"
                         hasShadow
                         icon={floppyDiskDuotone}
                         isLoading={formik.dirty && formik.isSubmitting}

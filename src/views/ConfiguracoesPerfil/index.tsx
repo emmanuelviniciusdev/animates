@@ -12,7 +12,8 @@ import { useSelector } from 'react-redux'
 import { RootState } from '../../redux/store'
 
 function ConfiguracoesConta() {
-    const [userHasNoPets, setUserHasNoPets] = useState<boolean>()
+    const [userHasNoPets, setUserHasNoPets] = useState(true)
+    const [openFormPet, setOpenFormPet] = useState(false)
 
     const auth = useSelector((state: RootState) => state.auth)
 
@@ -24,7 +25,7 @@ function ConfiguracoesConta() {
     useEffect(() => {
         if (!auth.userid) return
 
-        appAxios()
+        appAxios(false)
             .get(`usuario/${auth.userid}/animal`)
             .then((res) => setUserHasNoPets(res.data.length === 0))
     }, [auth.userid])
@@ -41,16 +42,19 @@ function ConfiguracoesConta() {
                 <main>
                     <h2>Meu pet</h2>
 
-                    {userHasNoPets && (
+                    {userHasNoPets && !openFormPet && (
                         <Content>
                             <p>Você ainda não possui um pet cadastrado.</p>
-                            <RoundedButton icon={plusBold}>
+                            <RoundedButton
+                                icon={plusBold}
+                                onClick={() => setOpenFormPet(true)}
+                            >
                                 adicionar novo pet
                             </RoundedButton>
                         </Content>
                     )}
 
-                    {!userHasNoPets && (
+                    {(!userHasNoPets || openFormPet) && (
                         <Content>
                             <SubContent>
                                 <h3>Galeria de fotos</h3>

@@ -2,7 +2,7 @@ import { rest } from 'msw'
 import { ResponseError, ResponseSuccess } from '../../shared/types/api.types'
 import { Photo, PhotosFormData } from '../../shared/types/gallery.types'
 
-const apiUrl = process.env.REACT_APP_BASE_API_URL
+const apiUrl = process.env.REACT_APP_BASE_API_URL_FOR_MOCKING
 
 /**
  * Endpoint: "/photos".

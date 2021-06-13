@@ -6,3 +6,9 @@ export type ResponseError = {
 export type ResponseSuccess = {
     data: any
 }
+
+export type DomainItem = {
+    id: number
+    nm_dominio: string
+    tp_dominio: string
+}

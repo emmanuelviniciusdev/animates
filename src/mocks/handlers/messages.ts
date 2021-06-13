@@ -6,7 +6,7 @@ import {
     MessagesListPagination,
 } from '../../shared/types/message.types'
 
-const apiUrl = process.env.REACT_APP_BASE_API_URL
+const apiUrl = process.env.REACT_APP_BASE_API_URL_FOR_MOCKING
 
 /**
  * Endpoint: "/list_messages".
